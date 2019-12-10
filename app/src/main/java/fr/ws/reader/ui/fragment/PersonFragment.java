@@ -62,8 +62,8 @@ public class PersonFragment extends BaseFragment implements View.OnClickListener
     protected void initData() {
         account = MainApplication.app.getAccount();
         if (account != null) {
-            QRequest.getWallet(String.valueOf(account.getEntityId()),account.getTokenPay(),callback);
-            showLoading().show();
+            //QRequest.getWallet(String.valueOf(account.getEntityId()),account.getTokenPay(),callback);
+           // showLoading().show();
         }
 
     }
@@ -71,8 +71,8 @@ public class PersonFragment extends BaseFragment implements View.OnClickListener
     @Override
     public void onResume() {
         super.onResume();
-        QRequest.getWallet(String.valueOf(account.getEntityId()),account.getTokenPay(),callback);
-        showLoading().show();
+        //QRequest.getWallet(String.valueOf(account.getEntityId()),account.getTokenPay(),callback);
+        //showLoading().show();
     }
 
     @Override
@@ -83,10 +83,10 @@ public class PersonFragment extends BaseFragment implements View.OnClickListener
                 startActivity(PersonDataActivity.class);
                 break;
             case R.id.layout_password_data:
-                startActivity(ChangePwdActivity.class);
+                //startActivity(ChangePwdActivity.class);
                 break;
             case R.id.layout_code_data:
-                startActivity(ChangeCodeActivity.class);
+                //startActivity(ChangeCodeActivity.class);
                 break;
             case R.id.layout_history:
                 startActivity(HistoryActivity.class);

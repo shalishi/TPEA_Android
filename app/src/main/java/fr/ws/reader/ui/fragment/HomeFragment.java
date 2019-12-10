@@ -71,7 +71,7 @@ public class HomeFragment extends BaseFragment implements CategoryListAdapter.On
     @Override
     protected void initView() {
         dbHandler = new DatabaseHandler(getContext());
-        refreshLayout.setOnRefreshListener(refreshListener);
+        //refreshLayout.setOnRefreshListener(refreshListener);
         lvHomeType.setLayoutManager(new LinearLayoutManager(getActivity()));
         Typeface font = Typeface.createFromAsset(getActivity().getAssets(), "fontello.ttf");
         tv_category.setTypeface(font);
@@ -83,7 +83,8 @@ public class HomeFragment extends BaseFragment implements CategoryListAdapter.On
     @Override
     public void onResume() {
         super.onResume();
-        refreshLayout.startRefresh(refreshListener);
+        //refreshLayout.startRefresh(refreshListener);
+        refreshLayout.stopRefresh();
         setupBadge();
     }
 
@@ -109,7 +110,7 @@ public class HomeFragment extends BaseFragment implements CategoryListAdapter.On
             }
         });
 
-        refreshLayout.startRefresh(refreshListener);
+        //refreshLayout.startRefresh(refreshListener);
         isFirstLoad = false;
         setupBadge();
     }

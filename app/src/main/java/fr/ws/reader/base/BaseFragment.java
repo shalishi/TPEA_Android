@@ -14,7 +14,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import fr.ws.reader.R;
-import fr.ws.reader.ui.activity.MainBuyerActivity;
+import fr.ws.reader.ui.activity.MainActivity;
 import fr.ws.reader.app.MainApplication;
 import fr.ws.reader.request.QCallback;
 import fr.ws.reader.util.DialogUtils;
@@ -131,8 +131,8 @@ public abstract class BaseFragment extends Fragment implements QCallback.OnCallb
      *
      * @return
      */
-    public MainBuyerActivity getMainActivity() {
-        return (MainBuyerActivity) getActivity();
+    public MainActivity getMainActivity() {
+        return (MainActivity) getActivity();
     }
 
     /**

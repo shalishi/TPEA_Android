@@ -30,7 +30,7 @@
     <string name="app_name">Asian Soupe</string>
     <string name="tab_home">MENU</string>
     <string name="tab_person">COMPTE</string>
-    <string name="tab_product">PRODUITS</string>
+    <string name="tab_sub">SUBSCRIPTION</string>
     <string name="tab_add"> </string>
 
     <string name="cancel">Annuler</string>

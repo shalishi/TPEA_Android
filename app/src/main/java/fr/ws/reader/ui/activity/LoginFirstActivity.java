@@ -113,7 +113,7 @@ public class LoginFirstActivity extends BaseActivity implements OnLoginStatusCha
                     account.setPassword(D.getInstance(this).getString("password", ""));
                     MainApplication.app.setAccount(account);
                     if (account.getIsActive() == 1) {
-                        startActivity(MainBuyerActivity.class);
+                        startActivity(MainActivity.class);
                     }
                     sendBroadcast(Config.ACTION_LOGIN);
                     finish();
@@ -165,6 +165,8 @@ public class LoginFirstActivity extends BaseActivity implements OnLoginStatusCha
      * @param view
      */
     public void login(View view) {
+        startActivity(MainActivity.class);
+        finish();
         String phone = et_phone.getText().toString();
         String pass = etPassword.getText().toString();
         if (phone.isEmpty() || pass.isEmpty()) {

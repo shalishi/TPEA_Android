@@ -39,16 +39,18 @@
             android:name="fr.ws.reader.ui.activity.LoginFirstActivity"
             android:launchMode="singleTask"
             android:theme="@style/Splash">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+
        </activity>
 
         <activity
-            android:name="fr.ws.reader.ui.activity.MainBuyerActivity"
+            android:name="fr.ws.reader.ui.activity.MainActivity"
             android:launchMode="singleTask"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <activity android:name="fr.ws.reader.ui.activity.RegisterActivity" />
         <activity
