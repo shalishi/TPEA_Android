@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/dp10"
+        android:paddingEnd="@dimen/dp15"
+        android:paddingStart="@dimen/dp15"
+        android:paddingTop="@dimen/dp10">
+
+        <ImageView
+            android:id="@+id/iv_pic"
+            android:layout_width="@dimen/dp75"
+            android:layout_height="@dimen/dp75"
+            android:background="@mipmap/default_pic" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp75"
+            android:layout_marginStart="@dimen/dp15"
+            android:layout_toEndOf="@+id/iv_pic"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textSize="@dimen/font_size_smaller"
+                android:textStyle="bold"
+                tools:text="Chaussures gris toile" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/price"
+                    android:textSize="@dimen/font_size_smallest" />
+
+                <TextView
+                    android:id="@+id/tv_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp4"
+                    android:maxLines="1"
+                    android:textColor="@color/theme_color"
+                    android:textSize="@dimen/font_size_smallest"
+                    android:textStyle="bold"
+                    tools:text="1500" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_stock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_size_smallest"
+                tools:text="Stock: 2000" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dp3"
+                android:orientation="horizontal"
+                android:weightSum="5">
+
+                <com.joanzapata.iconify.widget.IconTextView
+                    android:id="@+id/tv_favorite"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    tools:text="12121"
+                    android:textSize="@dimen/font_size_12"/>
+
+                <com.joanzapata.iconify.widget.IconTextView
+                    android:id="@+id/tv_see"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    tools:text="12121"
+                    android:textSize="@dimen/font_size_12"/>
+
+                <View
+                    android:layout_width="@dimen/dp10"
+                    android:layout_height="match_parent" />
+
+                <com.joanzapata.iconify.widget.IconTextView
+                    android:id="@+id/tv_detail"
+                    android:layout_width="0dp"
+                    android:layout_weight="3"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/button_stroke_bg"
+                    android:gravity="center"
+                    android:paddingEnd="@dimen/dp15"
+                    android:paddingStart="@dimen/dp15"
+                    android:singleLine="true"
+                    android:text="@string/see_detail"
+                    android:textColor="@drawable/text_color_black_press"
+                    android:textSize="@dimen/font_size_10" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

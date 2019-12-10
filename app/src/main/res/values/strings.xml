@@ -1,0 +1,175 @@
+<resources>
+
+    <!--error code -->
+    <string name="event_list_error1">Compte invalide</string>
+    <string name="event_list_error2">Mots de passe invalide</string>
+    <string name="error4">Echoué</string>
+
+    <string name="change_code_error0">Code de payer invalide</string>
+    <string name="change_code_error1">Compte invalide</string>
+    <string name="change_code_error2">Mots de passe invalide</string>
+
+    <string name="resetpwd_error1">Numéro de téléphone invalide</string>
+
+    <string name="changepwd_error0">Numéro de téléphone invalide</string>
+    <string name="changepwd_error1">Mots de passe invalide</string>
+    <string name="changepwd_error2">Nouveau mots de passe invalide</string>
+    <string name="changepwd_error3">Merci de répeter les mêmes mots de pass </string>
+
+    <string name="register_user_error1">Numéro de téléphone invalide</string>
+    <string name="register_user_error2">Mots de passe invalide</string>
+    <string name="register_user_error3">Merci de répeter les mêmes mots de pass </string>
+
+    <string name="addToCart_error5">Commande non trouvé</string>
+    <string name="addToCart_error4">Commande invalide</string>
+    <string name="addToCart_error3">Numéro de commande invalide</string>
+    <string name="addToCart_error2">Ajouter au panier echoué</string>
+    <string name="addToCart_error1">Votre panier est vide</string>
+
+
+    <string name="app_name">Asian Soupe</string>
+    <string name="tab_home">MENU</string>
+    <string name="tab_person">COMPTE</string>
+    <string name="tab_product">PRODUITS</string>
+    <string name="tab_add"> </string>
+
+    <string name="cancel">Annuler</string>
+    <string name="send">Envoyer</string>
+    <string name="price">Prix de pièce:</string>
+    <string name="minus">{icon-minus}</string>
+    <string name="add">{icon-plus}</string>
+    <string name="favorite">{icon-favorite} Favoris</string>
+    <string name="delete">{icon-delete} Supprimer</string>
+    <string name="see_detail">{icon-eye} Visualiser</string>
+    <string name="FAVORITE">{icon-favorite} FAVORIS</string>
+    <string name="company">Nom d\'enseigne:</string>
+    <string name="email">Email:</string>
+    <string name="telephone">Téléphone:</string>
+    <string name="address">Adresse:</string>
+    <string name="contact_seller">CONTACTER LE VENDEUR</string>
+
+    <!--用户文字-->
+    <string name="user_email">E-mail *</string>
+    <string name="user_password">Mot de passe *</string>
+    <string name="user_repassword">Confirmation de mot de passe *</string>
+    <string name="user_lastname">Nom *</string>
+    <string name="user_firstname">Prénom *</string>
+    <string name="user_telephone">Téléphone mobile *</string>
+    <string name="user_company">Nom d\'entreprise *</string>
+    <string name="user_invoice">№ Siret / TVA *</string>
+    <string name="user_address">Adresse *</string>
+    <string name="user_zip">Code postal *</string>
+    <string name="user_city">Ville *</string>
+    <string name="user_password_act">Mot de passe actuel *</string>
+    <string name="user_password_new">Nouveau mot de passe *</string>
+
+    <!--提示语-->
+    <string name="favorite_success">a été ajouté.</string>
+    <string name="delete_success">Produit a été supprimé.</string>
+    <string name="operation_success">Opération a été un succès.</string>
+    <string name="update_user_info_success">Modification a été bien enregistré.</string>
+    <string name="no_data">Aucune donnée disponible.</string>
+    <string name="add_favorite_success">Produit a été ajouté aux favoris !</string>
+    <string name="no_product">Vous n’avez aucun produit jusqu’a présent</string>
+
+
+    <string name="btn_login_seller">JE VENDS</string>
+    <string name="btn_login_buyer">J\'ACHÈTE</string>
+
+    <string name="btn_login">JE ME CONNECTE</string>
+    <string name="btn_release_product">PUBLIER CE PRODUIT</string>
+    <string name="btn_register_seller">JE CRÉE MON COMPTE</string>
+
+    <string name="btn_category">{icon-category} Catégories</string>
+    <string name="btn_trier">{icon-choose} Trier</string>
+    <string name="btn_delete">Supprimer</string>
+    <string name="btn_cancel">Annuler</string>
+    <string name="btn_ok">OK</string>
+    <string name="select_from_camera">Prendre une photo</string>
+    <string name="select_from_album">Choisir une photo depuis la bibliothèque</string>
+
+    <string name="hint_search">Référence, Produit, Marque</string>
+    <string name="no_favoriter">Personne ne l’a ajouté aux favoris jusqu’a présent</string>
+
+    <string name="product_title">Titre de produit</string>
+    <string name="product_description">Description de produit…</string>
+    <string name="product_category">Catégorie</string>
+    <string name="product_reference">Référence</string>
+    <string name="product_reference_generation">Génération automatique</string>
+    <string name="product_price">Prix de pièce</string>
+    <string name="product_stock">Stock</string>
+
+    <string name="title_favorite">Mes favoris</string>
+    <string name="title_recommend">Produits les plus consultés</string>
+    <string name="title_person">Mon compte</string>
+    <string name="title_register">Créer mon compte</string>
+    <string name="title_person_data">Mes informations</string>
+    <string name="title_helper">Helper</string>
+    <string name="title_product">Mes produits</string>
+    <string name="title_code_confirm">Activation du compte</string>
+    <string name="title_search">Rechercher</string>
+    <string name="title_other_person">Profil d\'acheteur</string>
+
+    <string name="credit_data">MON PORTEFEUILLE : </string>
+    <string name="person_data">Mes informations personelles</string>
+    <string name="password_data">Changer mots de passe</string>
+    <string name="code_secret">Code secret</string>
+    <string name="history">Historique</string>
+    <string name="alert">Mes alertes</string>
+    <string name="contact_us">Contact</string>
+    <string name="logout">\ue81f Déconnexion</string>
+
+    <string name="alert_title_product">Produit ajouté au favori par un acheteur</string>
+    <string name="alert_title_coor">Coordonnées consultés par un acheteur</string>
+    <string name="alert_email">Je souhaite être informé par e-mail</string>
+    <string name="alert_sms">Je souhaite recevoir un sms</string>
+
+    <string name="contact_seller_email">Envoyer un e-mail</string>
+    <string name="contact_seller_phone">Appeler ce numéro</string>
+    <string name="contact_seller_cancel">Annuler</string>
+    <string name="contact_seller_msg">Les informations du produit sont mis en ligne par le vendeur, veuillez contacter le vendeur pour plus de detail.</string>
+    <string name="contact_seller_msg1">Contacter le vendeur</string>
+    <string name="contact_seller_msg2">Vous pouvez contacter le vendeur par mail ou par téléphone…</string>
+
+    <!--LoginFirst-->
+    <string name="login_msg1">Vendre votre stock en quelques clics</string>
+
+    <!--LoginSecond-->
+    <string name="login_msg2">CONNECTEZ-VOUS</string>
+    <string name="btn_forgot_password">{fe-github} Mot de passe oublié ?</string>
+    <string name="btn_login_visitor">{fe-github} Je me connecte plus tard</string>
+    <string name="hint_phone">Votre numéro portable</string>
+    <string name="hint_pass">Votre mot de passe</string>
+    <string name="hint_fp_email">Votre numéro portable.</string>
+    <string name="dialog_fp_title">Retrouver mon compte</string>
+    <string name="dialog_fp_msg">Envoyer par SMS</string>
+
+    <!--RegisterSeller-->
+    <string name="upload_license">Joindre les documents d\'entreprise</string>
+    <string name="register_msg1">Kbis ou attestation de Siret</string>
+    <string name="have_to_write">*Champs obligatoires</string>
+    <string name="alert_success_title">Merci de votre inscription!</string>
+    <string name="alert_success_msg">Nous la validerons dans un délai maximum de 12 heures.</string>
+
+    <!--OtherPersonInfo-->alert_success_title
+    <string name="other_last_name">Nom</string>
+    <string name="other_first_name">Prénom</string>
+    <string name="other_telephone">Téléphone</string>
+    <string name="other_email">E-mail</string>
+
+    <!--ProductMerchantDetail-->.
+    <string name="delete_product_title">Supprimer ce produit</string>
+    <string name="delete_product_msg">Êtes-vous sûr</string>
+    <string name="delete_product_no">Non</string>
+    <string name="delete_product_yes">Oui</string>
+
+    <!--NetError-->
+    <string name="net_error_msg1">En ce moment vous n\'avez pas de connexion</string>
+    <string name="net_error_msg2">Assurez-vous que vous êtes connecté à ta 3G ou ton WI-FI pour accéder.</string>
+
+    <!--Rease product Error-->
+    <string name="product_release_error">Attention</string>
+    <string name="product_release_error_content">Merci de compléter tous les informations de votre produit.</string>
+
+
+</resources>

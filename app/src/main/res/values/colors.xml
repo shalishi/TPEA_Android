@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="transparent">#00000000</color>     <!--全透明-->
+    <color name="title_color">#DF3818</color>       <!--标题栏颜色-->
+    <color name="theme_color">#E45D30</color>       <!--主题色-->
+    <color name="button_color">#E74E00</color>      <!--按钮颜色-->
+    <color name="button_color_pressed">#c1471e</color><!--按钮压下颜色-->
+    <color name="base_background">#ffffff</color>   <!--页面默认背景色-->
+    <color name="base_background_dark">#202022</color>   <!--页面默认背景色(暗)-->
+    <color name="title_background">#fefeff</color>   <!--标题栏背景颜色-->
+    <color name="status_bar_color">#d1d1d1</color>   <!--状态栏背景颜色-->
+    <color name="alipay_h5_status_bar">#1D222D</color>     <!--支付宝H5支付状态栏颜色-->
+    <color name="splash_background">#fcfcfc</color>     <!--启动页背景颜色-->
+    <color name="item_pressed">#dcdcdc</color>     <!--白背景按钮压下颜色-->
+
+    <color name="color_white">#ffffff</color>       <!--纯白-->
+    <color name="color_black">#000000</color>       <!--纯黑-->
+    <color name="half_white_transparent">#98ffffff</color><!--半透明白-->
+    <color name="half_black_transparent">#50000000</color><!--半透明黑-->
+    <color name="eighty_black_transparent">#80000000</color><!--80%半透明黑-->
+    <color name="gray">#8c8c8c</color>
+    <color name="search_bg">#EAEBED</color>   <!--搜索框的背景-->
+    <color name="search_bg_press">#cecece</color>   <!--搜索框下压的背景-->
+    <color name="gray_deep">#5c5c5c</color>
+    <!--文本颜色-->
+    <color name="home_text">#111111</color>     <!--标题文字颜色-->
+    <color name="home_text33">#333333</color>     <!--标题文字颜色-->
+    <color name="content_text">#666666</color>  <!--内容文字颜色1-->
+    <color name="text_80">#808080</color>       <!--内容文字颜色2-->
+    <color name="hint_text">#aaaaaa</color>     <!--默认文字的颜色-->
+    <color name="color_cc">#cccccc</color>     <!--默认文字的颜色2-->
+    <color name="title_text">#030303</color>     <!--标题栏文字颜色-->
+    <color name="color_74">#747474</color>     <!---->
+
+    <color name="color_dd">#dddddd</color>
+    <color name="color_bb">#bbbbbb</color>
+    <color name="color_d8">#d8d8d8</color>
+    <color name="color_58">#58a8f7</color>
+    <color name="color_orange_press">#c75503</color>
+    <color name="color_f9">#f9f9f9</color>
+    <color name="color_b7">#b7b7b7</color>
+    <color name="line_e7">#e7e7e7</color>
+    <color name="color_fc">#fc662f</color>
+    <color name="color_f4">#f4f4f4</color>
+    <color name="color_f5">#f5f5f5</color>
+    <color name="color_ff6">#ff6b00</color>
+    <color name="color_new">#f2efec</color>
+    <color name="color_e5">#e5e5e5</color>
+    <color name="color_e7">#e7e7e7</color>
+    <color name="color_ef">#efefef</color>
+    <color name="color_ee">#eeeeee</color>
+    <color name="color_cb">#CBCBCB</color>
+    <color name="color_99">#999999</color>
+
+    <color name="color_yellow">#fdbb12</color>
+    <color name="color_red">#f23030</color>
+    <color name="color_red_press">#c41717</color>
+    <color name="color_orange">#ff6b00</color>
+    <color name="color_green">#7ED821</color>
+
+    <color name="pickerview_wheelview_textcolor_out">#a8a8a8</color>
+    <color name="pickerview_wheelview_textcolor_center">#2a2a2a</color>
+    <color name="pickerview_wheelview_textcolor_divider">#d5d5d5</color>
+</resources>

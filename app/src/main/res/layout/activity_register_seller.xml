@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <include layout="@layout/abs_title_layout" />
+
+    <fr.it8.asiansoupe.view.ObservableScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/et_lastname"
+                style="@style/InputEditText"
+                android:hint="@string/user_lastname" />
+
+            <EditText
+                android:id="@+id/et_firstname"
+                style="@style/InputEditText"
+                android:hint="@string/user_firstname" />
+
+            <EditText
+                android:id="@+id/et_telephone"
+                style="@style/InputEditText"
+                android:hint="@string/user_telephone"
+                android:inputType="phone" />
+
+            <EditText
+                android:id="@+id/et_store_name"
+                style="@style/InputEditText"
+                android:hint="@string/user_company" />
+
+            <EditText
+                android:id="@+id/et_address"
+                style="@style/InputEditText"
+                android:layout_height="@dimen/dp80"
+                android:gravity="start"
+                android:hint="@string/user_address"
+                android:paddingBottom="@dimen/dp10"
+                android:paddingTop="@dimen/dp10"
+                android:singleLine="false" />
+
+            <EditText
+                android:id="@+id/et_zip"
+                style="@style/InputEditText"
+                android:hint="@string/user_zip" />
+
+            <EditText
+                android:id="@+id/et_city"
+                style="@style/InputEditText"
+                android:hint="@string/user_city" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp34"
+                android:layout_marginEnd="@dimen/dp15"
+                android:layout_marginStart="@dimen/dp15"
+                android:layout_marginTop="@dimen/dp10"
+                android:background="@drawable/item_bg_normal"
+                android:onClick="onChooseCountry">
+
+                <TextView
+                    android:id="@+id/tv_country"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingEnd="@dimen/dp10"
+                    android:paddingStart="@dimen/dp10"
+                    tools:text="France" />
+
+                <com.joanzapata.iconify.widget.IconTextView
+                    android:layout_width="@dimen/dp34"
+                    android:layout_height="@dimen/dp34"
+                    android:layout_alignParentEnd="true"
+                    android:gravity="center"
+                    android:text="{icon-down-dir}" />
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/et_invoice"
+                style="@style/InputEditText"
+                android:hint="@string/user_invoice" />
+
+            <EditText
+                android:id="@+id/et_email"
+                style="@style/InputEditText"
+                android:hint="@string/user_email"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/et_password"
+                style="@style/InputEditText"
+                android:hint="@string/user_password"
+                android:inputType="textPassword" />
+
+            <EditText
+                android:id="@+id/et_repassword"
+                style="@style/InputEditText"
+                android:hint="@string/user_repassword"
+                android:inputType="textPassword" />
+
+            <Button
+                style="@style/ButtonOrange"
+                android:layout_height="@dimen/dp38"
+                android:layout_marginEnd="@dimen/dp40"
+                android:layout_marginStart="@dimen/dp40"
+                android:layout_marginTop="@dimen/dp25"
+                android:onClick="onUploadPic"
+                android:text="@string/upload_license"
+                android:textStyle="normal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dp8"
+                android:text="@string/register_msg1"
+                android:textColor="#878787"
+                android:textStyle="italic" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dp15"
+                android:layout_marginTop="@dimen/dp40"
+                android:gravity="end"
+                android:text="@string/have_to_write"
+                android:textColor="#878787"
+                android:textStyle="italic" />
+
+            <Button
+                style="@style/ButtonOrange"
+                android:layout_marginTop="@dimen/dp10"
+                android:onClick="onRegisterSeller"
+                android:text="@string/btn_login" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp20"
+                android:background="@color/transparent" />
+        </LinearLayout>
+    </fr.it8.asiansoupe.view.ObservableScrollView>
+
+</LinearLayout>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/abs_title_layout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp44"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <com.joanzapata.iconify.widget.IconTextView
+            android:id="@+id/tv_category"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:gravity="center"
+            android:onClick="onCategories"
+            android:text="{icon-category} Catégories"
+            android:textColor="@drawable/text_color"
+            android:textSize="@dimen/font_size_small"
+            android:visibility="invisible" />
+
+        <com.joanzapata.iconify.widget.IconTextView
+            android:id="@+id/tv_trier"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:gravity="center"
+            android:text="{icon-choose} Trier"
+            android:textColor="@drawable/text_color"
+            android:textSize="@dimen/font_size_small" />
+    </LinearLayout>
+
+    <View style="@style/Line" />
+
+    <fr.it8.asiansoupe.view.MySwipeRefreshLayout
+        android:id="@+id/refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/lv_recommend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </fr.it8.asiansoupe.view.MySwipeRefreshLayout>
+
+</LinearLayout>

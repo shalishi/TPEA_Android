@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_white"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/btn_take_photos"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp48"
+        android:background="?android:selectableItemBackground"
+        android:gravity="center"
+        android:text="@string/select_from_camera"
+        android:textColor="@color/color_58"
+        android:textSize="@dimen/font_size_normal" />
+
+    <View style="@style/Line" />
+
+    <TextView
+        android:id="@+id/btn_btn_phone_album"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp48"
+        android:background="?android:selectableItemBackground"
+        android:gravity="center"
+        android:text="@string/select_from_album"
+        android:textColor="@color/color_58"
+        android:textSize="@dimen/font_size_normal" />
+
+    <View
+        style="@style/Line"
+        android:layout_height="@dimen/dp15"
+        android:background="#eeeeee" />
+
+    <TextView
+        android:id="@+id/btn_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp48"
+        android:layout_marginTop="@dimen/item_divider_height"
+        android:background="?android:selectableItemBackground"
+        android:gravity="center"
+        android:text="@string/cancel"
+        android:textColor="@color/color_58"
+        android:textSize="@dimen/font_size_normal"
+        android:textStyle="bold" />
+
+</LinearLayout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp75"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="@dimen/dp50"
+            android:layout_height="@dimen/dp50"
+            android:background="@drawable/item_circle">
+
+            <fr.it8.asiansoupe.view.CircularImage
+                android:id="@+id/iv_favoriter_head"
+                android:layout_width="@dimen/dp48"
+                android:layout_height="@dimen/dp48"
+                android:layout_centerInParent="true"
+                android:scaleType="centerCrop" />
+        </RelativeLayout>
+
+
+
+        <TextView
+            android:id="@+id/tv_favoriter_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:maxWidth="@dimen/dp35"
+            android:textSize="@dimen/font_size_10"
+            android:singleLine="true"
+            android:ellipsize="end"
+            tools:text="Chen" />
+    </LinearLayout>
+</LinearLayout>

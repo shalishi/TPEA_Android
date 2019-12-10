@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="fr.it8.asiansoupe">
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <!-- wifi 权限 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 允许查看当前网络状态 -->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <!-- 改变当前网络状态 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 允许程序写入外部存储，如SD卡上写文件 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <protected-broadcast android:name="android.intent.action.MEDIA_MOUNTED" />
+    <application
+        android:name="fr.it8.asiansoupe.app.MainApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="fr.it8.asiansoupe.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths_app" />
+        </provider>
+
+        <activity
+            android:name="fr.it8.asiansoupe.ui.activity.LoginFirstActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/Splash">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+       </activity>
+
+        <activity
+            android:name="fr.it8.asiansoupe.ui.activity.MainBuyerActivity"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity android:name="fr.it8.asiansoupe.ui.activity.RegisterActivity" />
+        <activity
+            android:name="fr.it8.asiansoupe.ui.activity.PersonDataActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name="fr.it8.asiansoupe.ui.activity.HistoryActivity" />
+        <activity
+            android:name="fr.it8.asiansoupe.ui.activity.NetErrorActivity"
+            android:launchMode="singleTask" />
+    </application>
+
+</manifest>
