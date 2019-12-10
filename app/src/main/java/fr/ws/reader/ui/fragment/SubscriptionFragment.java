@@ -11,7 +11,7 @@ import fr.ws.reader.base.BaseFragment;
 public class SubscriptionFragment extends BaseFragment {
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_blank;
+        return R.layout.fragment_subscription;
     }
 
     @Override
