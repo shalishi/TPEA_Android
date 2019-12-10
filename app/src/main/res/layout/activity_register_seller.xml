@@ -7,7 +7,7 @@
 
     <include layout="@layout/abs_title_layout" />
 
-    <fr.it8.asiansoupe.view.ObservableScrollView
+    <fr.ws.reader.view.ObservableScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -148,6 +148,6 @@
                 android:layout_height="@dimen/dp20"
                 android:background="@color/transparent" />
         </LinearLayout>
-    </fr.it8.asiansoupe.view.ObservableScrollView>
+    </fr.ws.reader.view.ObservableScrollView>
 
 </LinearLayout>

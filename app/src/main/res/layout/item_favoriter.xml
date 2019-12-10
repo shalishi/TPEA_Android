@@ -16,7 +16,7 @@
             android:layout_height="@dimen/dp50"
             android:background="@drawable/item_circle">
 
-            <fr.it8.asiansoupe.view.CircularImage
+            <fr.ws.reader.view.CircularImage
                 android:id="@+id/iv_favoriter_head"
                 android:layout_width="@dimen/dp48"
                 android:layout_height="@dimen/dp48"

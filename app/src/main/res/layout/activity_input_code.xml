@@ -30,7 +30,7 @@
             android:textSize="@dimen/font_size_large"
             android:textStyle="bold" />
 
-        <fr.it8.asiansoupe.view.CodeView
+        <fr.ws.reader.view.CodeView
             android:id="@+id/code_view"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp50"

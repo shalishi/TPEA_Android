@@ -8,7 +8,7 @@
 
     <include layout="@layout/abs_title_layout" />
 
-    <fr.it8.asiansoupe.view.MySwipeRefreshLayout
+    <fr.ws.reader.view.MySwipeRefreshLayout
         android:id="@+id/refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -18,5 +18,5 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-    </fr.it8.asiansoupe.view.MySwipeRefreshLayout>
+    </fr.ws.reader.view.MySwipeRefreshLayout>
 </LinearLayout>

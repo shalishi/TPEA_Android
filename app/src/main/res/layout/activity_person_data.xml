@@ -76,7 +76,7 @@
 
     </RelativeLayout>
 
-    <fr.it8.asiansoupe.view.ObservableScrollView
+    <fr.ws.reader.view.ObservableScrollView
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -152,6 +152,6 @@
                 android:layout_height="@dimen/dp20"
                 android:background="@color/transparent" />
         </LinearLayout>
-    </fr.it8.asiansoupe.view.ObservableScrollView>
+    </fr.ws.reader.view.ObservableScrollView>
 
 </LinearLayout>

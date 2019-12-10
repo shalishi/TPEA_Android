@@ -31,7 +31,7 @@
             android:layout_marginStart="@dimen/dp25"
             android:text="@string/alert_email" />
 
-        <fr.it8.asiansoupe.view.SwitchButton
+        <fr.ws.reader.view.SwitchButton
             android:id="@+id/toggle_fav_email"
             android:layout_width="@dimen/dp40"
             android:layout_height="@dimen/dp20"
@@ -94,7 +94,7 @@
                 android:layout_marginStart="@dimen/dp25"
                 android:text="@string/alert_email" />
 
-            <fr.it8.asiansoupe.view.SwitchButton
+            <fr.ws.reader.view.SwitchButton
                 android:id="@+id/toggle_info_email"
                 android:layout_width="@dimen/dp40"
                 android:layout_height="@dimen/dp20"

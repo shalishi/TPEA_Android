@@ -107,7 +107,7 @@
             android:background="@color/color_cb" />
 
     </RelativeLayout>
-    <fr.it8.asiansoupe.view.MySwipeRefreshLayout
+    <fr.ws.reader.view.MySwipeRefreshLayout
         android:id="@+id/refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -119,6 +119,6 @@
             android:layout_marginTop="@dimen/dp10"
             android:paddingEnd="@dimen/dp10"
             android:paddingStart="@dimen/dp10" />
-    </fr.it8.asiansoupe.view.MySwipeRefreshLayout>
+    </fr.ws.reader.view.MySwipeRefreshLayout>
 
 </LinearLayout>

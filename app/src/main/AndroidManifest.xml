@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="fr.it8.asiansoupe">
+    package="fr.ws.reader">
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -18,7 +18,7 @@
     <uses-permission android:name="android.permission.SEND_SMS" />
     <protected-broadcast android:name="android.intent.action.MEDIA_MOUNTED" />
     <application
-        android:name="fr.it8.asiansoupe.app.MainApplication"
+        android:name="fr.ws.reader.app.MainApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -27,7 +27,7 @@
         android:theme="@style/AppTheme">
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="fr.it8.asiansoupe.fileProvider"
+            android:authorities="fr.ws.reader.fileProvider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -36,7 +36,7 @@
         </provider>
 
         <activity
-            android:name="fr.it8.asiansoupe.ui.activity.LoginFirstActivity"
+            android:name="fr.ws.reader.ui.activity.LoginFirstActivity"
             android:launchMode="singleTask"
             android:theme="@style/Splash">
         <intent-filter>
@@ -46,17 +46,17 @@
        </activity>
 
         <activity
-            android:name="fr.it8.asiansoupe.ui.activity.MainBuyerActivity"
+            android:name="fr.ws.reader.ui.activity.MainBuyerActivity"
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustPan" />
 
-        <activity android:name="fr.it8.asiansoupe.ui.activity.RegisterActivity" />
+        <activity android:name="fr.ws.reader.ui.activity.RegisterActivity" />
         <activity
-            android:name="fr.it8.asiansoupe.ui.activity.PersonDataActivity"
+            android:name="fr.ws.reader.ui.activity.PersonDataActivity"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name="fr.it8.asiansoupe.ui.activity.HistoryActivity" />
+        <activity android:name="fr.ws.reader.ui.activity.HistoryActivity" />
         <activity
-            android:name="fr.it8.asiansoupe.ui.activity.NetErrorActivity"
+            android:name="fr.ws.reader.ui.activity.NetErrorActivity"
             android:launchMode="singleTask" />
     </application>
 
