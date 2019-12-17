@@ -152,8 +152,8 @@ public class PersonFragment extends BaseFragment implements View.OnClickListener
         user = MainApplication.app.getUser();
         Account account = MainApplication.app.getAccount();
         if (account != null) {
-            //买家信息
-            QRequest.login(account.getEmail(), account.getPassword(), callback);
+            //
+            //QRequest.login(account.getEmail(), account.getPassword(), callback);
             layoutPerson.setVisibility(View.VISIBLE);
         } else {
             layoutPerson.setVisibility(View.GONE);

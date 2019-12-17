@@ -18,13 +18,13 @@
             android:orientation="vertical" >
 
 
-            <com.example.shali.mplrss.view.NoScrollListView
+            <fr.ws.reader.view.NoScrollListView
                 android:id="@+id/listview_array"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
 
-            </com.example.shali.mplrss.view.NoScrollListView>
+            </fr.ws.reader.view.NoScrollListView>
         </LinearLayout>
     </ScrollView>
 
