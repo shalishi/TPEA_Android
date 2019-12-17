@@ -39,7 +39,7 @@ public class CartProductAdapter extends BaseRecyclerViewAdapter<Product> {
         if (product != null) {
             Typeface font = Typeface.createFromAsset(context.getAssets(), "fontello.ttf");
             helper.setText(R.id.tv_name, product.getName()).setText(R.id.tv_price, Utils.getPrice(product.getPrice()))
-                    .setText(R.id.tv_qty, product.getQty().toString()).setText(R.id.tv_qty_text, "Qty : ").setText(R.id.tv_sum,Utils.getPrice((product.getQty()*Float.parseFloat(product.getPrice()))+""));
+                    .setText(R.id.tv_qty, product.getQty().toString()).setText(R.id.tv_qty_text, "Qty : ");
 
             String url = Constants.SERVER_IMAGE_ADDRESS + product.getImg();
             helper.setImageThumb(R.id.iv_pic, url);

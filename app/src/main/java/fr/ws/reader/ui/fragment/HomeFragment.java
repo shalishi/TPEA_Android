@@ -23,6 +23,7 @@ import fr.ws.reader.adapter.CategoryListAdapter;
 import fr.ws.reader.adapter.PopupCategroyAdapter;
 import fr.ws.reader.app.MainApplication;
 import fr.ws.reader.base.BaseFragment;
+import fr.ws.reader.bean.Article;
 import fr.ws.reader.bean.Category;
 import fr.ws.reader.bean.Product;
 import fr.ws.reader.interfaces.OnItemClickListener;
@@ -60,9 +61,9 @@ public class HomeFragment extends BaseFragment implements CategoryListAdapter.On
     private CategoryAdapter adapter;
     private CategoryListAdapter categoryListAdapter;
     private List<Category> categories;
-    private List<Category> categorypPoducts;
+    private List<Article> articles;
     private DatabaseHandler dbHandler;
-    private Integer mCartItemCount=0;
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_home;
@@ -85,7 +86,6 @@ public class HomeFragment extends BaseFragment implements CategoryListAdapter.On
         super.onResume();
         //refreshLayout.startRefresh(refreshListener);
         refreshLayout.stopRefresh();
-        setupBadge();
     }
 
     @Override
@@ -112,7 +112,6 @@ public class HomeFragment extends BaseFragment implements CategoryListAdapter.On
 
         //refreshLayout.startRefresh(refreshListener);
         isFirstLoad = false;
-        setupBadge();
     }
 
     @Override
@@ -216,21 +215,7 @@ public class HomeFragment extends BaseFragment implements CategoryListAdapter.On
 
     @Override
     public void updateQty_C(Product product, int position) {
-        setupBadge();
+
     }
 
-    private void setupBadge() {
-        List<Product> cart_products=dbHandler.getAllProducts();
-        mCartItemCount=cart_products.size();
-            if (mCartItemCount == 0) {
-                if (cart_badge.getVisibility() != View.GONE) {
-                    cart_badge.setVisibility(View.GONE);
-                }
-            } else {
-                cart_badge.setText(String.valueOf(Math.min(mCartItemCount, 99)));
-                if (cart_badge.getVisibility() != View.VISIBLE) {
-                    cart_badge.setVisibility(View.VISIBLE);
-                }
-            }
-    }
 }

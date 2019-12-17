@@ -1,5 +1,9 @@
 <resources>
 
+    <!-- fragement home -->
+    <string name="title">Rss reader</string>
+    <string name="sub_title">Best rss reader</string>
+
     <!--error code -->
     <string name="event_list_error1">Compte invalide</string>
     <string name="event_list_error2">Mots de passe invalide</string>
