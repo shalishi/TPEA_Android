@@ -62,9 +62,6 @@
             app:layout_constraintTop_toBottomOf="@+id/pubDate" />
 
 
-
-
-
         <Button
         android:id="@+id/btn_download"
         android:layout_width="25dp"
