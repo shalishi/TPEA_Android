@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import butterknife.BindView;
 import fr.ws.reader.R;
+import fr.ws.reader.adapter.ArticleAdapter;
 import fr.ws.reader.adapter.CategoryAdapter;
 import fr.ws.reader.adapter.CategoryListAdapter;
 import fr.ws.reader.adapter.PopupCategroyAdapter;
@@ -73,7 +74,10 @@ public class HomeFragment extends BaseFragment implements CategoryListAdapter.On
     protected void initView() {
         dbHandler = new DatabaseHandler(getContext());
         //refreshLayout.setOnRefreshListener(refreshListener);
+
+
         lvHomeType.setLayoutManager(new LinearLayoutManager(getActivity()));
+
         Typeface font = Typeface.createFromAsset(getActivity().getAssets(), "fontello.ttf");
         tv_category.setTypeface(font);
         tv_category.setText("\ue822");
@@ -91,8 +95,8 @@ public class HomeFragment extends BaseFragment implements CategoryListAdapter.On
     @Override
     protected void initData() {
         adapter = new CategoryAdapter(lvHomeType, new ArrayList<Category>(), R.layout.item_home_type);
-        categoryListAdapter = new CategoryListAdapter(lvHomeType, new ArrayList<Category>(), R.layout.item_category,getContext());
-        categoryListAdapter.setOnProductOperationListener(this);
+        //categoryListAdapter = new CategoryListAdapter(lvHomeType, new ArrayList<Category>(), R.layout.item_category,getContext());
+        //categoryListAdapter.setOnProductOperationListener(this);
         btn_category.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -110,6 +114,9 @@ public class HomeFragment extends BaseFragment implements CategoryListAdapter.On
             }
         });
 
+        ArrayList<Article> articles = new ArrayList<>();
+        ArticleAdapter articleAdapterAdapter = new ArticleAdapter(articles,R.layout.article_row,getActivity(),getFragmentManager());
+        lvHomeType.setAdapter(articleAdapterAdapter);
         //refreshLayout.startRefresh(refreshListener);
         isFirstLoad = false;
     }
