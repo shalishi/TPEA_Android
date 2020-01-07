@@ -9,9 +9,9 @@ import fr.ws.reader.base.BaseRecyclerViewAdapter;
 import fr.ws.reader.base.ViewHolderHelper;
 import fr.ws.reader.bean.Feed;
 
-public class SubscriptionAdapter extends BaseRecyclerViewAdapter<Feed>{
+public class RecommendeAdapter extends BaseRecyclerViewAdapter<Feed>{
 
-    public SubscriptionAdapter(RecyclerView view, List<Feed> dataList, int layoutId) {
+    public RecommendeAdapter(RecyclerView view, List<Feed> dataList, int layoutId) {
         super (view, dataList, layoutId);
     }
 

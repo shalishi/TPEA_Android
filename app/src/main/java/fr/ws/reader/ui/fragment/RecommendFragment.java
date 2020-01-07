@@ -8,10 +8,10 @@ import fr.ws.reader.base.BaseFragment;
 /**
  * Created by Administrator on 2017/11/7 0007.
  */
-public class SubscriptionFragment extends BaseFragment {
+public class RecommendeFragment extends BaseFragment {
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_subscription;
+        return R.layout.fragment_recommend;
     }
 
     @Override
