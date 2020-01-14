@@ -1,31 +1,35 @@
+
+
 package fr.ws.reader.bean;
 
-import java.io.Serializable;
+
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-/**
- * 产品 数据体
- */
-public class Feed implements Serializable {
+public class Feed {
 
-    private Integer entity_id=0;
+    public Feed(int entity_id, String title, String link, String description, String image, String categories_string) {
+        this.entity_id = entity_id;
+        this.title = title;
+        this.link = link;
+        this.description = description;
+        this.image = image;
+        this.categories_string = categories_string;
+    }
+
+    private int entity_id;
     private String title;
     private String link;
+    private String description;
+    private String image;
+    private String categories_string;
 
-    public Feed(Integer entity_id,String title,String link){
-
-        this.entity_id=entity_id;
-        this.title=title;
-        this.link=link;
-    }
-    public Feed(){
-
-    }
-    public Integer getEntity_id() {
+    public int getEntity_id() {
         return entity_id;
     }
 
-    public void setEntity_id(Integer entity_id) {
+    public void setEntity_id(int entity_id) {
         this.entity_id = entity_id;
     }
 
@@ -45,14 +49,66 @@ public class Feed implements Serializable {
         this.link = link;
     }
 
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getCategories_string() {
+        return categories_string;
+    }
+
+    public void setCategories_string(String categories_string) {
+        this.categories_string = categories_string;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+
+
     @Override
     public String toString() {
-        return "Feed{" +
-                "entity_id='" + entity_id + '\'' +
-                ", title='" + title + '\'' +
+        return "Article{" +
+                "title='" + title + '\'' +
                 ", link='" + link + '\'' +
-
-
+                ", description='" + description + '\'' +
+                ", image='" + image + '\'' +
+                ", categories_string=" + categories_string +
                 '}';
     }
+
+
+    public static final String NAME = Feed.class.getSimpleName().toLowerCase();
+    public static final String _ID = "entity_id";
+    public static final String TITLE = "title";
+    public static final String LINK = "link";
+    public static final String IMAGE = "image";
+    public static final String CATEGORY = "category";
+    public static final String DESCIRPTION = "description";
+
+    public static final String CREATE_TABLE =
+            "CREATE TABLE " + NAME +
+                    " ( " +
+                    _ID + " integer primary key autoincrement, " +
+                    TITLE + " string," +
+                    LINK + " string unique," +
+                    IMAGE + " string," +
+                    CATEGORY + " string," +
+                    DESCIRPTION + " string," +
+                    " ); ";
+
+    public static final String DROP_TABLE = "DROP TABLE IF EXISTS " + NAME;
+    public static String[] Columns = new String[]{_ID,TITLE,LINK,IMAGE,CATEGORY,DESCIRPTION};
+
+
 }

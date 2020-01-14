@@ -34,8 +34,8 @@
     <string name="app_name">Reader</string>
     <string name="tab_home">MENU</string>
     <string name="tab_person">COMPTE</string>
-    <string name="tab_sub">SUBSCRIPTION</string>
-    <string name="tab_add"> </string>
+    <string name="tab_sub">RECOMMEND</string>
+    <string name="tab_add">READ LATER</string>
 
     <string name="cancel">Annuler</string>
     <string name="send">Envoyer</string>
@@ -175,5 +175,20 @@
     <string name="product_release_error">Attention</string>
     <string name="product_release_error_content">Merci de compléter tous les informations de votre produit.</string>
 
+    <string name="delete_check">Vous êtes sûr?</string>
+    <string name="yes">Oui</string>
+
+
+    <string-array name="Recommend">
+        <item>Sun</item>
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
 
 </resources>
