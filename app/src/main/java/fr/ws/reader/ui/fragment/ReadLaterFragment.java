@@ -17,31 +17,22 @@ import com.google.gson.reflect.TypeToken;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.List;
-
 import butterknife.BindView;
 import fr.ws.reader.R;
 import fr.ws.reader.adapter.CategoryAdapter;
-import fr.ws.reader.adapter.CategoryListAdapter;
-import fr.ws.reader.adapter.PopupCategroyAdapter;
-import fr.ws.reader.app.MainApplication;
 import fr.ws.reader.base.BaseFragment;
 import fr.ws.reader.bean.Article;
 import fr.ws.reader.bean.Category;
-import fr.ws.reader.bean.Product;
-import fr.ws.reader.interfaces.OnItemClickListener;
 import fr.ws.reader.request.QRequest;
-import fr.ws.reader.ui.activity.HistoryActivity;
 import fr.ws.reader.util.DatabaseHandler;
-import fr.ws.reader.util.L;
 import fr.ws.reader.view.MyPopupWindow;
 import fr.ws.reader.view.MySwipeRefreshLayout;
 
 /**
  * 首页fragment
  */
-public class ReadLaterFragment extends BaseFragment implements CategoryListAdapter.OnProductOperationListener {
+public class ReadLaterFragment extends BaseFragment{
 
     private static final String TAG = "HomeFragment";
 
@@ -57,13 +48,10 @@ public class ReadLaterFragment extends BaseFragment implements CategoryListAdapt
     TextView tv_cart;
     @BindView(R.id.cart_badge)
     TextView cart_badge;
-    @BindView(R.id.btn_category)
-    LinearLayout btn_category;
     @BindView(R.id.btn_cart)
     RelativeLayout btn_cart;
     private MyPopupWindow categoriesWindow;
     private CategoryAdapter adapter;
-    private CategoryListAdapter categoryListAdapter;
     private List<Category> categories;
     private List<Article> articles;
     private DatabaseHandler dbHandler;
@@ -94,53 +82,15 @@ public class ReadLaterFragment extends BaseFragment implements CategoryListAdapt
 
     @Override
     protected void initData() {
-        adapter = new CategoryAdapter (lvHomeType, new ArrayList<Category> (), R.layout.item_home_type);
-        categoryListAdapter = new CategoryListAdapter (lvHomeType, new ArrayList<Category> (), R.layout.item_category, getContext ());
-        categoryListAdapter.setOnProductOperationListener (this);
-        btn_category.setOnClickListener (new View.OnClickListener () {
-            @Override
-            public void onClick(View v) {
-                createCategoryWindow ();
-            }
-        });
-        btn_cart.setOnClickListener (new View.OnClickListener () {
-            @Override
-            public void onClick(View v) {
-                startActivity (HistoryActivity.class);
-            }
-        });
-
-        //refreshLayout.startRefresh(refreshListener);
-        isFirstLoad = false;
+//        adapter = new CategoryAdapter (lvHomeType, new ArrayList<Category> (), R.layout.item_home_type);
+//        //refreshLayout.startRefresh(refreshListener);
+//        isFirstLoad = false;
     }
 
     @Override
     public void onSuccess(String data, int id) throws JSONException {
         JSONObject js = new JSONObject (data);
         switch (id) {
-            //分类列表
-            case QRequest.GOOD_TYPE_LIST:
-                L.d (TAG, data);
-                categories = getGson ().fromJson (
-                        js.optString ("list"), new TypeToken<List<Category>> () {
-                        }.getType ());
-
-                if (isListNotNull (categories)) {
-                    adapter.replaceAll (categories);
-                    MainApplication.app.setCategories (categories);
-                }
-                break;
-            //product list
-            case QRequest.PRODUCT_LIST:
-                L.d (TAG, data);
-                categories = getGson ().fromJson (
-                        js.optString ("list"), new TypeToken<List<Category>> () {
-                        }.getType ());
-                if (isListNotNull (categories)) {
-                    categoryListAdapter.replaceAll (categories);
-                    MainApplication.app.setCategories (categories);
-                }
-                break;
             default:
                 break;
         }
@@ -169,53 +119,5 @@ public class ReadLaterFragment extends BaseFragment implements CategoryListAdapt
             QRequest.productList (callback);
         }
     };
-
-    /**
-     * 子分类列表显示popup
-     */
-    private void createCategoryWindow() {
-        View popupView = getLayoutInflater ().inflate (R.layout.layout_popup_array, null);
-        RecyclerView lvArray = popupView.findViewById (R.id.lv_array);
-        lvArray.setLayoutManager (new LinearLayoutManager (getContext ()));
-        View outside = popupView.findViewById (R.id.layout_outside);
-        final LinearLayoutManager llm = (LinearLayoutManager) lvHomeType.getLayoutManager ();
-        final PopupCategroyAdapter adapter = new PopupCategroyAdapter (lvArray, MainApplication.app.getCategories (), R.layout.item_popup_array);
-        adapter.setOnItemClickListener (new OnItemClickListener<Category> () {
-            @Override
-            public void onItemClick(ViewGroup parent, View view, Category category, int position) {
-                categoriesWindow.dismiss ();
-                llm.scrollToPositionWithOffset (position, 0);
-            }
-
-            @Override
-            public boolean onItemLongClick(ViewGroup parent, View view, Category category, int position) {
-                return false;
-            }
-        });
-        if (categoriesWindow == null) {
-            categoriesWindow = new MyPopupWindow (popupView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-            categoriesWindow.setBackgroundDrawable (new ColorDrawable (Color.parseColor ("#50000000")));
-            categoriesWindow.setFocusable (true);
-            categoriesWindow.setOutsideTouchable (true);
-            categoriesWindow.update ();
-            categoriesWindow.showAsDropDown (view_line);
-        } else {
-            categoriesWindow.showAsDropDown (view_line);
-        }
-        //点击其他地方消去PopupWindow
-        outside.setOnClickListener (new View.OnClickListener () {
-            @Override
-            public void onClick(View view) {
-                if (categoriesWindow.isShowing ())
-                    categoriesWindow.dismiss ();
-            }
-        });
-    }
-
-
-    @Override
-    public void updateQty_C(Product product, int position) {
-
-    }
 
 }
