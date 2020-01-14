@@ -29,7 +29,7 @@ import fr.ws.reader.interfaces.OnLoginStatusChangeListener;
 import fr.ws.reader.request.QRequest;
 import fr.ws.reader.ui.fragment.HomeFragment;
 import fr.ws.reader.ui.fragment.PersonFragment;
-import fr.ws.reader.ui.fragment.SubscriptionFragment;
+import fr.ws.reader.ui.fragment.ReadLaterFragment;
 import fr.ws.reader.util.OnMessageReceiver;
 import fr.ws.reader.view.MyPopupWindow;
 import fr.ws.reader.view.MyViewPager;
@@ -119,7 +119,7 @@ public class MainActivity extends BaseActivity implements OnLoginStatusChangeLis
     private ArrayList<Fragment> getFragments() {
         ArrayList<Fragment> fragments = new ArrayList<>();
         fragments.add(new HomeFragment());
-        fragments.add(new SubscriptionFragment());
+        fragments.add(new ReadLaterFragment());
         fragments.add(new PersonFragment());
 
         return fragments;
