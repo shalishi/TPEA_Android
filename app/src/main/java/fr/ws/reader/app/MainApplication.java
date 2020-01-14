@@ -42,6 +42,7 @@ public class MainApplication extends Application {
     public User user;
     public List<Feed> subscribedfeeds;
     public List<Trier> triers;
+    public List<Category> categories;
     public Country country;
 
     @Override
@@ -195,6 +196,38 @@ public class MainApplication extends Application {
             }
         }
         return triers;
+    }
+
+    /**
+     * 获取排序列表
+     *
+     * @return
+     */
+    public List<Category> getCategories() {
+        /*if (categories == null) {
+            String str = D.getInstance(app).getString(Constants.CATEGORIES_INFO, "");
+            if (str.isEmpty()) {
+                return null;
+            } else {
+                categories = new Gson().fromJson(str, new TypeToken<List<Category>>() {
+                }.getType());
+                setCategories (categories);
+            }
+        }*/
+        categories=new ArrayList<Category>();
+        categories.add (new Category ("123","fiance"));
+        categories.add (new Category ("-1","all"));
+        return categories;
+    }
+
+    /**
+     * 存储排序列表
+     *
+     * @param categories
+     */
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
+        D.getInstance(app).putString(Constants.CATEGORIES_INFO, new Gson().toJson(categories));
     }
 
     /**
