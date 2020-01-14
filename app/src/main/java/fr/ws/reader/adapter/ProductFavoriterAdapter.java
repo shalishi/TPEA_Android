@@ -21,7 +21,7 @@ public class ProductFavoriterAdapter extends BaseRecyclerViewAdapter<User> {
 
     @Override
     public void convert(ViewHolderHelper helper, User user, int position) {
-        helper.setText(R.id.tv_favoriter_name, user.getFirstname());
-        helper.setImageResource(R.id.iv_favoriter_head, R.drawable.default_portrait);
+        //helper.setText(R.id.tv_favoriter_name, user.getFirstname());
+        //helper.setImageResource(R.id.iv_favoriter_head, R.drawable.default_portrait);
     }
 }

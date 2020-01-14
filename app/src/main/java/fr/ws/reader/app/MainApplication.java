@@ -173,8 +173,8 @@ public class MainApplication extends Application {
             }.getType());
         }*/
         subscribedfeeds = new ArrayList<Feed>();
-        subscribedfeeds.add(new Feed(1,"Aweber blog","http://www.aweber.com/blog/feed/"));
-        subscribedfeeds.add(new Feed(2,"Android authority","https://www.androidauthority.com/feed"));
+        //subscribedfeeds.add(new Feed(1,"Aweber blog","http://www.aweber.com/blog/feed/"));
+        //subscribedfeeds.add(new Feed(2,"Android authority","https://www.androidauthority.com/feed"));
         return subscribedfeeds;
     }
 

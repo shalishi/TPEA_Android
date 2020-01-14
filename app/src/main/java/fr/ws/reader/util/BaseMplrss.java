@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import fr.ws.reader.bean.Article;
-import fr.ws.reader.bean.Souscription;
+import fr.ws.reader.bean.Feed;
 
 public class BaseMplrss extends SQLiteOpenHelper {
 
@@ -28,7 +28,7 @@ public class BaseMplrss extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL(Souscription.CREATE_TABLE);
+        db.execSQL(Feed.CREATE_TABLE);
         db.execSQL(Article.CREATE_TABLE);
     }
 
@@ -36,7 +36,7 @@ public class BaseMplrss extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         if (newVersion > oldVersion) {
 
-            db.execSQL(Souscription.DROP_TABLE);
+            db.execSQL(Feed.DROP_TABLE);
             db.execSQL(Article.DROP_TABLE);
             onCreate(db);
         }

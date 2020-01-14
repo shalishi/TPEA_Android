@@ -14,7 +14,7 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import fr.ws.reader.bean.Article;
-import fr.ws.reader.bean.Souscription;
+import fr.ws.reader.bean.Feed;
 
 public class mplrssProvider extends ContentProvider {
 
@@ -33,7 +33,7 @@ public class mplrssProvider extends ContentProvider {
         return Uri.parse("content://" + authority + "/" + table + "/offset/" + limit);
     }
     static {
-        matcher.addURI(authority, Souscription.NAME + "/offset/" + "#", SOUSCRIPTION);
+        matcher.addURI(authority, Feed.NAME + "/offset/" + "#", SOUSCRIPTION);
         matcher.addURI(authority, Article.NAME + "/offset/" + "#", ARTICLE);
     }
 
@@ -53,8 +53,8 @@ public class mplrssProvider extends ContentProvider {
 
         switch (code){
             case SOUSCRIPTION:
-                id=db.delete(Souscription.NAME,selection,selectionArgs);
-                path = Souscription.NAME;
+                id=db.delete(Feed.NAME,selection,selectionArgs);
+                path = Feed.NAME;
                 break;
             case ARTICLE:
                 id=db.delete(Article.NAME,selection,selectionArgs);
@@ -88,8 +88,8 @@ public class mplrssProvider extends ContentProvider {
 
         switch (code){
             case SOUSCRIPTION: {
-                id=db.insert(Souscription.NAME,null,values);
-                path = Souscription.NAME;
+                id=db.insert(Feed.NAME,null,values);
+                path = Feed.NAME;
                 break;
             }
             case ARTICLE: {
@@ -125,7 +125,7 @@ public class mplrssProvider extends ContentProvider {
 
         switch (matcher.match(uri)) {
             case SOUSCRIPTION: {
-                sqb.setTables(Souscription.NAME);
+                sqb.setTables(Feed.NAME);
                 offset = uri.getLastPathSegment();
                 break;
             }
