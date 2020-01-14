@@ -113,6 +113,7 @@ public class mplrssProvider extends ContentProvider {
         return true;
     }
 
+//    tableColumns, whereClause, whereArgs, groupBy, having, orderBy
     @Override
     public Cursor query(Uri uri, String[] projection, String selection,
                         String[] selectionArgs, String sortOrder) {

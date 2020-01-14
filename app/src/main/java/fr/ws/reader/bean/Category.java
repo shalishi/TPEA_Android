@@ -25,6 +25,13 @@ public class Category implements Serializable {
         this.entity_id = entity_id;
     }
 
+    public Category(String entity_id,String name) {
+        this.entity_id = entity_id;
+        this.name = name;
+    }
+
+
+
     public String getEntity_id() {
         return entity_id;
     }

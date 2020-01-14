@@ -29,7 +29,7 @@ public class FeedSimpleAdapter extends BaseRecyclerViewAdapter<Feed>{
     @Override
     public void convert(ViewHolderHelper helper, Feed feed, int position) {
 
-        helper.setText(R.id.tv_category, feed.getTitle());
+        helper.setText(R.id.tv_Feed, feed.getTitle());
         helper.setVisible(R.id.iv_right, false);
         //helper.setVisible(R.id.iv_choose, feed.isChoose());
         lv_product_type = (RecyclerView)helper.getView(R.id.lv_product_type);

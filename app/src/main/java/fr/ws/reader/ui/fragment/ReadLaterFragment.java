@@ -36,12 +36,10 @@ public class ReadLaterFragment extends BaseFragment{
     MySwipeRefreshLayout refreshLayout;
     @BindView(R.id.view_line)
     View view_line;
-    @BindView(R.id.tv_category)
-    TextView tv_category;
+    @BindView(R.id.tv_Feed)
+    TextView tv_Feed;
     @BindView(R.id.tv_cart)
     TextView tv_cart;
-    @BindView(R.id.cart_badge)
-    TextView cart_badge;
     @BindView(R.id.btn_cart)
     RelativeLayout btn_cart;
     private MyPopupWindow categoriesWindow;
@@ -59,8 +57,8 @@ public class ReadLaterFragment extends BaseFragment{
         //refreshLayout.setOnRefreshListener(refreshListener);
         lvHomeType.setLayoutManager (new LinearLayoutManager (getActivity ()));
         Typeface font = Typeface.createFromAsset (getActivity ().getAssets (), "fontello.ttf");
-        tv_category.setTypeface (font);
-        tv_category.setText ("\ue822");
+        tv_Feed.setTypeface (font);
+        tv_Feed.setText ("\ue822");
         tv_cart.setTypeface (font);
         tv_cart.setText ("\ue86a");
     }

@@ -12,32 +12,24 @@
         android:orientation="horizontal"
         android:weightSum="2">
 
-        <com.joanzapata.iconify.widget.IconTextView
-            android:id="@+id/tv_category"
+        <com.joanzapata.iconify.widget.IconButton
+            android:id="@+id/btn_category"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
-            android:gravity="center"
-            android:onClick="onCategories"
             android:text="{icon-category} Catégories"
             android:textColor="@drawable/text_color"
             android:textSize="@dimen/font_size_small"
-            android:visibility="invisible" />
+            android:visibility="visible" />
 
-        <com.joanzapata.iconify.widget.IconTextView
-            android:id="@+id/tv_trier"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
-            android:gravity="center"
-            android:text="{icon-choose} Trier"
-            android:textColor="@drawable/text_color"
-            android:textSize="@dimen/font_size_small" />
     </LinearLayout>
-
-    <View style="@style/Line" />
+    <View
+        android:id="@+id/view_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/list_divider_height"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_cb" />
 
     <fr.ws.reader.view.MySwipeRefreshLayout
         android:id="@+id/refresh_layout"

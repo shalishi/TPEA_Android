@@ -88,7 +88,7 @@ public class MainActivity extends BaseActivity implements OnLoginStatusChangeLis
     private void initNavigationBarAndViewPager() {
         navigationBar.setTitles(title).setNormalIcons(iconUnSel).setSelectedIcons(iconSel).generate();
         viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager(), fragments));
-        viewPager.setOffscreenPageLimit(3);
+        viewPager.setOffscreenPageLimit(4);
         navigationBar.setContainer(viewPager);
         navigationBar.setTabListener(this);
     }

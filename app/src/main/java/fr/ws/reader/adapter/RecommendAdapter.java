@@ -16,7 +16,6 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import fr.ws.reader.R;
@@ -25,10 +24,7 @@ import fr.ws.reader.ui.fragment.deleteFeedDialogFragment;
 import fr.ws.reader.util.mplrssProvider;
 import com.squareup.picasso.Picasso;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 
@@ -71,16 +67,16 @@ public class RecommendAdapter extends RecyclerView.Adapter<fr.ws.reader.adapter.
 
         viewHolder.title.setText(currentFeed.getTitle());
 
-//        Picasso.get()
-//                .load(currentFeed.getImage())
-//                //.centerInside()
-//                .into(viewHolder.Feed_image);
-
-       /* Picasso.get()
+        Picasso.get()
                 .load("http://i.imgur.com/DvpvklR.png")
-                .placeholder(R.drawable.placeholder)
-                .centerInside()
-                .into(viewHolder.Feed_image);*/
+                //.centerInside()
+                .into(viewHolder.Feed_image);
+
+//        Picasso.get()
+//                .load("http://i.imgur.com/DvpvklR.png")
+//                .placeholder(R.drawable.placeholder)
+//                .centerInside()
+//                .into(viewHolder.Feed_image);
         //viewHolder.Feed_image.setImageResource(R.drawable.selected);
 
 
