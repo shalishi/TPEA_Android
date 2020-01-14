@@ -35,7 +35,6 @@ public class Article implements java.io.Serializable {
     private String content;
     private String image;
     private String categories_string;
-    private List<String> categories;
 
     public String getTitle() {
         return title;
@@ -93,10 +92,6 @@ public class Article implements java.io.Serializable {
         this.image = image;
     }
 
-    public List<String> getCategories() {
-        return categories;
-    }
-
     public String getcategories_string() {
         return categories_string;
     }
@@ -112,11 +107,6 @@ public class Article implements java.io.Serializable {
     public void setId(int id) {
         this._id = id;
     }
-    public void addCategory(String category) {
-        if (categories == null)
-            categories = new ArrayList<>();
-        categories.add(category);
-    }
 
     @Override
     public String toString() {
@@ -128,7 +118,6 @@ public class Article implements java.io.Serializable {
                 ", description='" + description + '\'' +
                 ", content='" + content + '\'' +
                 ", image='" + image + '\'' +
-                ", categories=" + categories +
                 '}';
     }
 

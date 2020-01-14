@@ -40,11 +40,6 @@
     </style>
 
     <!--透明样式-->
-    <style name="Transparent" parent="AppTheme">
-        <item name="android:windowBackground">@color/transparent</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsTranslucent">true</item>
-    </style>
 
     <!-- CommonDialog样式 -->
     <style name="Loading">
@@ -121,23 +116,8 @@
     </style>
 
     <!--标题栏右侧文字样式-->
-    <style name="TitleRightText">
-        <item name="android:textColor">@color/theme_color</item>
-        <item name="android:layout_alignParentEnd">true</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:textSize">@dimen/font_size_normal</item>
-        <item name="android:layout_marginEnd">@dimen/dp15</item>
-        <item name="android:gravity">center</item>
-    </style>
 
     <!--标题栏右侧图片样式-->
-    <style name="TitleRightImage" parent="AppTheme">
-        <item name="android:layout_height">@dimen/title_height</item>
-        <item name="android:layout_width">@dimen/title_height</item>
-        <item name="android:padding">@dimen/dp12</item>
-        <item name="android:layout_alignParentEnd">true</item>
-    </style>
 
     <style name="Banner">
         <item name="android:layout_width">match_parent</item>
@@ -171,14 +151,4 @@
     </style>
 
 
-    <style name="pin_edittext_style">
-        <item name="android:gravity">center</item>
-        <item name="android:cursorVisible">true</item>
-        <item name="android:maxLength">1</item>
-        <item name="android:minEms">2</item>
-        <item name="android:inputType">numberPassword</item>
-        <item name="android:focusable">true</item>
-        <item name="android:focusableInTouchMode">true</item>
-
-    </style>
 </resources>

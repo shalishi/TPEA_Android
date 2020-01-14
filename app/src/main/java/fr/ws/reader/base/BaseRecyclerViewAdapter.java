@@ -12,6 +12,7 @@ import android.view.animation.LinearInterpolator;
 
 import com.joanzapata.iconify.Iconify;
 
+import fr.ws.reader.adapter.RecommendAdapter;
 import fr.ws.reader.interfaces.BaseAnimation;
 import fr.ws.reader.interfaces.DataIO;
 import fr.ws.reader.interfaces.OnItemClickListener;
@@ -48,6 +49,9 @@ public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<Vi
             mRecyclerView.setAdapter(this);
         }
         Iconify.with(new FontelloModule());
+    }
+
+    protected BaseRecyclerViewAdapter() {
     }
 
     @Override

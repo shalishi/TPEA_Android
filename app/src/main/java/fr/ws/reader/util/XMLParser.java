@@ -80,7 +80,6 @@ public class XMLParser extends Observable {
                 } else if (xmlPullParser.getName().equalsIgnoreCase("category")) {
                     if (insideItem) {
                         String category = xmlPullParser.nextText();
-                        currentArticle.addCategory(category);
                     }
 
                 } else if (xmlPullParser.getName().equalsIgnoreCase("media:thumbnail")) {

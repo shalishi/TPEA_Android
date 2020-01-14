@@ -71,10 +71,10 @@ public class RecommendAdapter extends RecyclerView.Adapter<fr.ws.reader.adapter.
 
         viewHolder.title.setText(currentFeed.getTitle());
 
-        Picasso.get()
-                .load(currentFeed.getImage())
-                //.centerInside()
-                .into(viewHolder.Feed_image);
+//        Picasso.get()
+//                .load(currentFeed.getImage())
+//                //.centerInside()
+//                .into(viewHolder.Feed_image);
 
        /* Picasso.get()
                 .load("http://i.imgur.com/DvpvklR.png")

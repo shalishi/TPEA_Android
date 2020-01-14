@@ -87,21 +87,8 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
        //viewHolder.article_image.setImageResource(R.drawable.selected);
 
 
-
         viewHolder.pubDate.setText(pubDateString);
-
-        String categories = "";
-        if (currentArticle.getCategories() != null) {
-            for (int i = 0; i < currentArticle.getCategories().size(); i++) {
-                if (i == currentArticle.getCategories().size() - 1) {
-                    categories = categories + currentArticle.getCategories().get(i);
-                } else {
-                    categories = categories + currentArticle.getCategories().get(i) + ", ";
-                }
-            }
-        }
-
-        viewHolder.category.setText(categories);
+        viewHolder.category.setText(currentArticle.getcategories_string ());
 
         viewHolder.btn_download.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,7 +98,6 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
                 String link = articles.get(viewHolder.getAdapterPosition()).getLink();
                 Date date = articles.get(viewHolder.getAdapterPosition()).getPubDate();
                 String image = articles.get(viewHolder.getAdapterPosition()).getImage();
-                List<String> categories = articles.get(viewHolder.getAdapterPosition()).getCategories();
                 ArrayList<Article> list = new ArrayList<Article>();
                 Article newArticle = new Article();
                 newArticle.setTitle(title);
@@ -119,9 +105,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
                 newArticle.setLink(link);
                 newArticle.setImage(image);
                 newArticle.setPubDate(date);
-                for (String S:categories) {
-                    newArticle.addCategory(S);
-                }
+                newArticle.getcategories_string ();
                 list.add(newArticle);
                 updaterss(list);
                 Toast.makeText(mContext,"Download Success!",Toast.LENGTH_SHORT).show();
@@ -179,10 +163,6 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
         int i=0;
         for(Article article : list) {
             ContentValues values = new ContentValues();
-            String cates="";
-            for(String s : article.getCategories()) {
-                cates+=s+" ";
-            }
             SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss aa");
             String pubDateString = dateFormat.format(article.getPubDate());
             values.put(Article.TITLE, article.getTitle());
@@ -195,7 +175,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
             Date now = new Date();
             String strDate = sdfDate.format(now);
             values.put(Article.DATE, strDate);
-            values.put(Article.CATEGORY, cates);
+            values.put(Article.CATEGORY, article.getcategories_string ());
             cvArray[i] = values;
             i++;
         }

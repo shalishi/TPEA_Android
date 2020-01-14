@@ -5,6 +5,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import fr.ws.reader.adapter.RecommendAdapter;
 import fr.ws.reader.interfaces.MultiItemTypeSupport;
 import fr.ws.reader.interfaces.OnClickLoadMoreListener;
 

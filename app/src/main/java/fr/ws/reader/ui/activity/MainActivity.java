@@ -30,6 +30,7 @@ import fr.ws.reader.request.QRequest;
 import fr.ws.reader.ui.fragment.HomeFragment;
 import fr.ws.reader.ui.fragment.PersonFragment;
 import fr.ws.reader.ui.fragment.ReadLaterFragment;
+import fr.ws.reader.ui.fragment.RecommendFragment;
 import fr.ws.reader.util.OnMessageReceiver;
 import fr.ws.reader.view.MyPopupWindow;
 import fr.ws.reader.view.MyViewPager;
@@ -66,10 +67,10 @@ public class MainActivity extends BaseActivity implements OnLoginStatusChangeLis
 
     @Override
     protected void initView() {
-        fragments = getFragments();
-        initNavigationBarAndViewPager();
-        receiver = new OnMessageReceiver(this);
-        registerReceiver(receiver, Config.ACTION_LOGIN, Config.ACTION_LOGOUT);
+          fragments = getFragments();
+          initNavigationBarAndViewPager();
+          //receiver = new OnMessageReceiver(this);
+          //registerReceiver(receiver, Config.ACTION_LOGIN, Config.ACTION_LOGOUT);
     }
 
 
@@ -77,17 +78,17 @@ public class MainActivity extends BaseActivity implements OnLoginStatusChangeLis
 
     @Override
     protected void initData() {
-        account = MainApplication.app.getAccount();
-        if (account != null) {
-            //买家信息
-            //QRequest.userInfoMore(account.getEmail(), account.getPassword(), callback);
-        }
+//        account = MainApplication.app.getAccount();
+//        if (account != null) {
+//            //买家信息
+//            //QRequest.userInfoMore(account.getEmail(), account.getPassword(), callback);
+//        }
     }
 
     private void initNavigationBarAndViewPager() {
         navigationBar.setTitles(title).setNormalIcons(iconUnSel).setSelectedIcons(iconSel).generate();
         viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager(), fragments));
-        viewPager.setOffscreenPageLimit(4);
+        viewPager.setOffscreenPageLimit(3);
         navigationBar.setContainer(viewPager);
         navigationBar.setTabListener(this);
     }
@@ -119,7 +120,7 @@ public class MainActivity extends BaseActivity implements OnLoginStatusChangeLis
     private ArrayList<Fragment> getFragments() {
         ArrayList<Fragment> fragments = new ArrayList<>();
         fragments.add(new HomeFragment());
-        fragments.add(new ReadLaterFragment());
+        fragments.add(new RecommendFragment ());
         fragments.add(new PersonFragment());
 
         return fragments;
