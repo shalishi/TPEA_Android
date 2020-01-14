@@ -12,6 +12,7 @@ import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.https.HttpsUtils;
 import com.zhy.http.okhttp.log.LoggerInterceptor;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
@@ -21,6 +22,7 @@ import javax.net.ssl.SSLSession;
 
 import fr.ws.reader.bean.Account;
 import fr.ws.reader.bean.Country;
+import fr.ws.reader.bean.Feed;
 import fr.ws.reader.bean.User;
 import fr.ws.reader.bean.Category;
 import fr.ws.reader.bean.Trier;
@@ -38,7 +40,7 @@ public class MainApplication extends Application {
     public Context mContext;
     public Account account;
     public User user;
-    public List<Category> categories;
+    public List<Feed> subscribedfeeds;
     public List<Trier> triers;
     public Country country;
 
@@ -156,31 +158,24 @@ public class MainApplication extends Application {
         return user;
     }
 
-    /**
-     * 设置产品分类信息
-     *
-     * @param categories
-     */
-    public void setCategories(List<Category> categories) {
-        this.categories = categories;
-        D.getInstance(app).putString(Constants.CATEGORIES_INFO, new Gson().toJson(categories));
-    }
 
     /**
-     * 获取产品分类
+     * get subscribed feeds
      *
      * @return
      */
-    public List<Category> getCategories() {
-        String str = D.getInstance(app).getString(Constants.CATEGORIES_INFO, "");
+    public List<Feed> getSubscribedFeeds() {
+        /*String str = D.getInstance(app).getString(Constants.CATEGORIES_INFO, "");
         if (str.isEmpty()) {
             return null;
         } else {
-            //取到时，将数据存入实体中方便获取
-            categories = new Gson().fromJson(str, new TypeToken<List<Category>>() {
+            subscribedfeeds = new Gson().fromJson(str, new TypeToken<List<Feed>>() {
             }.getType());
-        }
-        return categories;
+        }*/
+        subscribedfeeds = new ArrayList<Feed>();
+        subscribedfeeds.add(new Feed(1,"Aweber blog","http://www.aweber.com/blog/feed/"));
+        subscribedfeeds.add(new Feed(2,"Android authority","https://www.androidauthority.com/feed"));
+        return subscribedfeeds;
     }
 
     /**

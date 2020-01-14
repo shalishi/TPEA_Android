@@ -78,6 +78,7 @@ public abstract class BaseActivity extends AppCompatActivity implements QCallbac
         initData();
     }
 
+
     /**
      * Shows soft keyboard.
      *

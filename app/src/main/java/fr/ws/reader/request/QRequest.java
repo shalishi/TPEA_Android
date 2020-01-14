@@ -24,7 +24,7 @@ public class QRequest {
     public static final int INFORMATION_SMS_NOTICE = 1032;     //个人信息短信通知
     public static final int PERSON_NOTIFICATION = 1033;     //个人通知
 
-
+    public static final int READ_FEED = 1003;    //READ FEED
     public static final int LOGIN = 1004;    //登录
     public static final int PRODUCT_LIST = 1016;    //商品列表
     public static final int GOOD_TYPE_LIST = 1014;    //产品分类列表
@@ -37,8 +37,16 @@ public class QRequest {
     public static final int CHANGE_CODE = 1016;    //reset密码
     public static final int LIST_EVENTS = 1017;    //LIST_EVENTS
 
+
+
     /**
-     * 登录
+     * get feed content
+     */
+    public static void readFeed(String url, QCallback callback) {
+        QMethod.get(url, null, READ_FEED, callback);
+    }
+    /**
+     * login
      */
     public static void login(String telephone, String password, QCallback callback) {
         Map<String, String> map = new HashMap<>();

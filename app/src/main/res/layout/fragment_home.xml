@@ -45,14 +45,14 @@
 
 
         <LinearLayout
-            android:id="@+id/btn_category"
+            android:id="@+id/btn_Feed"
             android:layout_alignParentLeft="true"
             android:layout_centerHorizontal="true"
             android:layout_width="@dimen/title_left_width"
             android:layout_height="@dimen/title_height">
 
             <TextView
-                android:id="@+id/tv_category"
+                android:id="@+id/tv_Feed"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

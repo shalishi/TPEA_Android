@@ -26,7 +26,7 @@ public class ProductAdapter extends BaseRecyclerViewAdapter<Product> {
     public static final int NORMAL = 1;    //普通产品列表
     public static final int FAVORITE = 2;    //我的收藏产品列表
 
-    private OnProductOperationListener onProductOperationListener;
+    //private OnProductOperationListener onProductOperationListener;
     private int flag;
     private Context context;
     private DatabaseHandler dbHandler;
@@ -69,8 +69,8 @@ public class ProductAdapter extends BaseRecyclerViewAdapter<Product> {
                     TextView qty=(TextView)helper.getView(R.id.tv_qty);
                     int old_qty=Integer.parseInt(qty.getText().toString());
                     helper.setText(R.id.tv_qty,(old_qty+1)+"");
-                    if (onProductOperationListener != null)
-                        onProductOperationListener.updateQty(product, position);
+                    //if (onProductOperationListener != null)
+                        //onProductOperationListener.updateQty(product, position);
                 }
             });
 
@@ -83,8 +83,8 @@ public class ProductAdapter extends BaseRecyclerViewAdapter<Product> {
                         product.setQty(1);
                         dbHandler.MinusProductToCart(product);
                         helper.setText(R.id.tv_qty, (old_qty - 1) + "");
-                        if (onProductOperationListener != null)
-                            onProductOperationListener.updateQty(product, position);
+                        //if (onProductOperationListener != null)
+                            //onProductOperationListener.updateQty(product, position);
                     }
                 }
             });
@@ -110,7 +110,7 @@ public class ProductAdapter extends BaseRecyclerViewAdapter<Product> {
             */
         }
     }
-
+/*
     public void setOnProductOperationListener(OnProductOperationListener onProductOperationListener) {
         this.onProductOperationListener = onProductOperationListener;
     }
@@ -120,6 +120,6 @@ public class ProductAdapter extends BaseRecyclerViewAdapter<Product> {
         void updateQty(Product product, int position);
 
     }
-
+*/
 
 }
