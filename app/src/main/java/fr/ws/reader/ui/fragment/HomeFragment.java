@@ -13,9 +13,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.gson.reflect.TypeToken;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
@@ -24,20 +22,13 @@ import butterknife.BindView;
 import fr.ws.reader.R;
 import fr.ws.reader.adapter.ArticleAdapter;
 import fr.ws.reader.adapter.FeedSimpleAdapter;
-import fr.ws.reader.adapter.PopupCategroyAdapter;
 import fr.ws.reader.adapter.PopupFeedsAdapter;
 import fr.ws.reader.app.MainApplication;
 import fr.ws.reader.base.BaseFragment;
 import fr.ws.reader.bean.Article;
 import fr.ws.reader.bean.Feed;
-import fr.ws.reader.bean.Product;
 import fr.ws.reader.interfaces.OnItemClickListener;
-import fr.ws.reader.request.QRequest;
-import fr.ws.reader.ui.activity.HistoryActivity;
-import fr.ws.reader.util.DatabaseHandler;
-import fr.ws.reader.util.L;
 import fr.ws.reader.util.Parser;
-import fr.ws.reader.util.SnackbarUtil;
 import fr.ws.reader.view.MyPopupWindow;
 import fr.ws.reader.view.MySwipeRefreshLayout;
 
@@ -58,8 +49,6 @@ public class HomeFragment extends BaseFragment {
     TextView tv_Feed;
     @BindView(R.id.tv_cart)
     TextView tv_cart;
-    @BindView(R.id.cart_badge)
-    TextView cart_badge;
     @BindView(R.id.btn_Feed)
     LinearLayout btn_Feed;
     @BindView(R.id.btn_cart)
@@ -69,7 +58,6 @@ public class HomeFragment extends BaseFragment {
     private List<Feed> feeds;
     private List<Article> articles;
     private ArticleAdapter articleAdapter;
-    private DatabaseHandler dbHandler;
 
     @Override
     protected int getLayoutId() {
@@ -78,15 +66,12 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void initView() {
-        dbHandler = new DatabaseHandler(getContext());
         refreshLayout.setOnRefreshListener(refreshListener);
         lvHomeType.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         Typeface font = Typeface.createFromAsset(getActivity().getAssets(), "fontello.ttf");
         tv_Feed.setTypeface(font);
         tv_Feed.setText("\ue822");
-        tv_cart.setTypeface(font);
-        tv_cart.setText("\ue86a");
     }
 
     @Override
@@ -123,7 +108,7 @@ public class HomeFragment extends BaseFragment {
 
 
     public void loadFeed(String urlString) {
-        refreshLayout.startRefresh(refreshListener);
+        //refreshLayout.startRefresh(refreshListener);
         Parser parser = new Parser();
         parser.execute(urlString);
         parser.onFinish(new Parser.OnTaskCompleted() {
@@ -178,9 +163,16 @@ public class HomeFragment extends BaseFragment {
     private SwipeRefreshLayout.OnRefreshListener refreshListener = new SwipeRefreshLayout.OnRefreshListener() {
         @Override
         public void onRefresh() {
-            //loadFeed();
+            loadFeed("http://www.aweber.com/blog/feed/");
         }
     };
+
+    /**
+     * download article to read later
+     */
+    public void downloadArtile(View v){
+
+    }
 
     /**
      * feeds popup
