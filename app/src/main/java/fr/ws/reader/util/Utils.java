@@ -207,8 +207,8 @@ public class Utils {
         D.getInstance(context).putString(Constants.USER_INFO, "");  //清除个人信息数据
         D.getInstance(context).putString(Constants.ACCOUNT_INFO, "");   //清除个人账号信息
         D.getInstance(context).putString("password", "");  //清除个人信息数据
-        DatabaseHandler dh =new DatabaseHandler(context);
-        dh.deleteDB();
+        //DatabaseHandler dh =new DatabaseHandler(context);
+        //dh.deleteDB();
     }
 
     /**

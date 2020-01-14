@@ -20,7 +20,6 @@ import fr.ws.reader.base.BaseFragment;
 import fr.ws.reader.bean.Article;
 import fr.ws.reader.bean.Category;
 import fr.ws.reader.request.QRequest;
-import fr.ws.reader.util.DatabaseHandler;
 import fr.ws.reader.view.MyPopupWindow;
 import fr.ws.reader.view.MySwipeRefreshLayout;
 
@@ -49,7 +48,6 @@ public class ReadLaterFragment extends BaseFragment{
     private CategoryAdapter adapter;
     private List<Category> categories;
     private List<Article> articles;
-    private DatabaseHandler dbHandler;
 
     @Override
     protected int getLayoutId() {
@@ -58,7 +56,6 @@ public class ReadLaterFragment extends BaseFragment{
 
     @Override
     protected void initView() {
-        dbHandler = new DatabaseHandler (getContext ());
         //refreshLayout.setOnRefreshListener(refreshListener);
         lvHomeType.setLayoutManager (new LinearLayoutManager (getActivity ()));
         Typeface font = Typeface.createFromAsset (getActivity ().getAssets (), "fontello.ttf");

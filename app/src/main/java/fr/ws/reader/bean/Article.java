@@ -122,8 +122,8 @@ public class Article implements java.io.Serializable {
     }
 
 
-    public static final String NAME = Article.class.getSimpleName().toLowerCase();
-    public static final String _ID = "_id";
+    public static final String NAME = Article.class.getSimpleName().toUpperCase();
+    public static final String _ID = "entity_id";
     public static final String TITLE = "title";
     public static final String LINK = "link";
     public static final String IMAGE = "image";
@@ -135,7 +135,7 @@ public class Article implements java.io.Serializable {
     public static final String CREATE_TABLE =
             "CREATE TABLE " + NAME +
                     " ( " +
-                    _ID + " integer primary key autoincrement, " +
+                    _ID + " integer primary key autoincrement," +
                     TITLE + " string," +
                     LINK + " string unique," +
                     IMAGE + " string," +

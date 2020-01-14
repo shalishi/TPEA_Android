@@ -19,7 +19,6 @@ import fr.ws.reader.bean.Product;
  */
 public class FeedSimpleAdapter extends BaseRecyclerViewAdapter<Feed>{
 
-    private ProductAdapter adapter;
     private Context context;
     private RecyclerView lv_product_type;
     public FeedSimpleAdapter(RecyclerView view, ArrayList<Feed> dataList, int layoutId, Context context) {
@@ -34,8 +33,6 @@ public class FeedSimpleAdapter extends BaseRecyclerViewAdapter<Feed>{
         helper.setVisible(R.id.iv_right, false);
         //helper.setVisible(R.id.iv_choose, feed.isChoose());
         lv_product_type = (RecyclerView)helper.getView(R.id.lv_product_type);
-        //adapter = new ProductAdapter(lv_product_type, category.getList(), R.layout.item_product,ProductAdapter.NORMAL,context);
-        //adapter.setOnProductOperationListener(this);
         lv_product_type.setLayoutManager(new LinearLayoutManager(context));
 
     }

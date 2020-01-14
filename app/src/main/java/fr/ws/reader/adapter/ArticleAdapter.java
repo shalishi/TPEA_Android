@@ -23,6 +23,7 @@ import android.widget.Toast;
 import fr.ws.reader.R;
 import fr.ws.reader.ui.dialog.deleteArticleDialogFragment;
 import fr.ws.reader.bean.Article;
+import fr.ws.reader.util.DatabaseHandler;
 import fr.ws.reader.util.mplrssProvider;
 import com.squareup.picasso.Picasso;
 
@@ -106,17 +107,13 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
                 newArticle.setImage(image);
                 newArticle.setPubDate(date);
                 newArticle.getcategories_string ();
-                list.add(newArticle);
-                updaterss(list);
-                Toast.makeText(mContext,"Download Success!",Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
-        viewHolder.btn_delete.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                deleteArticleDialogFragment_m = deleteArticleDialogFragment.newInstance(currentArticle.getId());
-                deleteArticleDialogFragment_m.show(mfm, "fragment_delete_link");
+                DatabaseHandler handler = new DatabaseHandler(mContext);
+                if(handler.saveArticle(newArticle)>0){
+                    Toast.makeText(mContext,"Download Success!",Toast.LENGTH_SHORT).show();
+                    viewHolder.btn_download.setVisibility(View.INVISIBLE);}
+                else{
+                    Toast.makeText(mContext,"Download failed!",Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

@@ -88,7 +88,7 @@ public class Feed {
     }
 
 
-    public static final String NAME = Feed.class.getSimpleName().toLowerCase();
+    public static final String NAME = Feed.class.getSimpleName().toUpperCase();
     public static final String _ID = "entity_id";
     public static final String TITLE = "title";
     public static final String LINK = "link";
@@ -104,7 +104,7 @@ public class Feed {
                     LINK + " string unique," +
                     IMAGE + " string," +
                     CATEGORY + " string," +
-                    DESCIRPTION + " string," +
+                    DESCIRPTION + " string" +
                     " ); ";
 
     public static final String DROP_TABLE = "DROP TABLE IF EXISTS " + NAME;
