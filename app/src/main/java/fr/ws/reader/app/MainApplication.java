@@ -169,10 +169,10 @@ public class MainApplication extends Application {
         feeds = new ArrayList<Feed>();
         feeds.add (new Feed (1, "Aweber blog", "http://www.aweber.com/blog/feed/", "fiance", "http://i.imgur.com/DvpvklR.png", "1",0));
         feeds.add (new Feed (2, "Android authority", "https://www.androidauthority.com/feed", "arts", "http://i.imgur.com/DvpvklR.png", "2",0));
-        feeds.add (new Feed (3, "Blue", "https://serica.blog/feed", "education", "https://oldchinesebooks.files.wordpress.com/2019/03/sinica_91-2.jpg", "3",0));
-        feeds.add (new Feed (4, "Green", "https://epubw.com/feed", "fiance", " https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGy_P_1SUE4EVDUQsgT7eigb8LbS-x8LgYs8z1WM47rDzAtZ4gFw&s", "1",0));
-        feeds.add (new Feed (5, "Amber", "http://southasiawatch.tw/feed", "fiance", "https://southasiawatch.tw/wp-content/uploads/logo-2.png", "1",0));
-        feeds.add (new Feed (6, "Deep Orange", "https://plausistory.blog/feed/", "arts", "https://s0.wp.com/i/buttonw-com.png", "2",0));
+        feeds.add (new Feed (3, "Serica", "https://serica.blog/feed", "Chinese", "https://oldchinesebooks.files.wordpress.com/2019/03/sinica_91-2.jpg", "3",0));
+        feeds.add (new Feed (4, "Epubw", "https://epubw.com/feed", "fiance", " https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGy_P_1SUE4EVDUQsgT7eigb8LbS-x8LgYs8z1WM47rDzAtZ4gFw&s", "4",0));
+        feeds.add (new Feed (5, "South asia watch", "http://southasiawatch.tw/feed", "fiance", "https://southasiawatch.tw/wp-content/uploads/logo-2.png", "5",0));
+        feeds.add (new Feed (6, "NASA TV", "https://plausistory.blog/feed/", "arts", "https://s0.wp.com/i/buttonw-com.png", "2",0));
 
         return feeds;
     }
@@ -180,9 +180,12 @@ public class MainApplication extends Application {
 
     public List<Category> getCategories() {
         categories=new ArrayList<Category>();
-        categories.add (new Category ("1","fiance"));
-        categories.add (new Category ("2","art"));
-        categories.add (new Category ("3","education"));
+        categories.add (new Category ("1","Marketing"));
+        categories.add (new Category ("2","Android News"));
+        categories.add (new Category ("3","Chinese"));
+        categories.add (new Category ("4","Roman"));
+        categories.add (new Category ("5","Asia"));
+        categories.add (new Category ("5","NASA"));
         categories.add (new Category ("-1","all"));
         return categories;
     }
