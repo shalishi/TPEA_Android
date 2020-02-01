@@ -24,7 +24,7 @@
 #-------------------------------------------定制化区域----------------------------------------------
 #---------------------------------1.实体类---------------------------------
 
--keep class fr.it8.icigrossiste.bean.** {*;}
+-keep class fr.ws.rssreader.bean.** {*;}
 
 #-------------------------------------------------------------------------
 
@@ -37,6 +37,11 @@
   **[] $VALUES;
   public *;
 }
+
+#fairebase
+-keep attributes Signature
+-keep attributes *Annotation*
+
 
 #okhttputils
 -dontwarn com.zhy.http.**

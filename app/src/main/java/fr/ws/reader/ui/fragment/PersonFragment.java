@@ -28,19 +28,10 @@ public class PersonFragment extends BaseFragment implements View.OnClickListener
 
     @BindView(R.id.layout_person_data)
     RelativeLayout layoutPersonData;
-    @BindView(R.id.layout_password_data)
-    RelativeLayout layout_password_data;
-    @BindView(R.id.layout_code_data)
-    RelativeLayout layout_code_data;
-    @BindView(R.id.layout_history)
-    RelativeLayout layout_history;
     @BindView(R.id.layout_logout)
     LinearLayout layoutLogout;
     @BindView(R.id.layout_person)
     LinearLayout layoutPerson;
-    @BindView(R.id.credit)
-    TextView credit;
-    private Float amount=null;
     private Account account;
     @Override
     protected int getLayoutId() {
@@ -51,9 +42,6 @@ public class PersonFragment extends BaseFragment implements View.OnClickListener
     protected void initView() {
         getTitleBar().setCustomTitle(getString(R.string.title_person), false, null);
         layoutPersonData.setOnClickListener(this);
-        layout_password_data.setOnClickListener(this);
-        layout_code_data.setOnClickListener(this);
-        layout_history.setOnClickListener(this);
         layoutLogout.setOnClickListener(this);
     }
 
@@ -77,24 +65,14 @@ public class PersonFragment extends BaseFragment implements View.OnClickListener
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            //个人信息
             case R.id.layout_person_data:
                 startActivity(PersonDataActivity.class);
                 break;
-            case R.id.layout_password_data:
-                //startActivity(ChangePwdActivity.class);
-                break;
-            case R.id.layout_code_data:
-                //startActivity(ChangeCodeActivity.class);
-                break;
-            case R.id.layout_history:
-                startActivity(HistoryActivity.class);
-                break;
-            //退出登录
             case R.id.layout_logout:
                 Utils.clearInfo(getActivity());
                 getBaseActivity().sendBroadcast(Config.ACTION_LOGOUT);
                 startActivity(LoginFirstActivity.class);
+                getBaseActivity().finish();
                 break;
             default:
                 break;
@@ -113,25 +91,7 @@ public class PersonFragment extends BaseFragment implements View.OnClickListener
 
     @Override
     public void onSuccess(String data, int id) throws JSONException {
-        JSONObject js = new JSONObject(data);
-        switch (id) {
-            //刷新个人数据信息
-            case QRequest.LOGIN:
-                User user = getGson().fromJson(js.optString("user"), User.class);
-                MainApplication.app.setUser(user);
-                break;
 
-            case QRequest.WALLET:
-                if(!js.isNull("amount")){
-                    amount = Float.parseFloat(js.optString("amount"));
-                    credit.setText(Utils.getPrice(String.valueOf(amount)));
-                }
-
-                break;
-            default:
-                break;
-        }
-        dismissLoading();
     }
 
     @Override

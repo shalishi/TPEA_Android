@@ -53,7 +53,7 @@ public class RecommendFragment extends BaseFragment{
     @BindView(R.id.view_line)
     View view_line;
 
-    private List<Feed> feeds;
+    private ArrayList<Feed> feeds;
     private FeedAdapter adapter;
     private List<Category> categories;
     private MyPopupWindow categoryWindow;
@@ -61,6 +61,7 @@ public class RecommendFragment extends BaseFragment{
     private RecommendAdapter mAdapter;
     private ArrayList<Feed> data;
     private String categoryType = "-1";
+
 
     @Override
     protected int getLayoutId() {
@@ -70,17 +71,9 @@ public class RecommendFragment extends BaseFragment{
 
     public void initlist(){
             recyclerView.setLayoutManager (new LinearLayoutManager (getActivity ()));
-
             // this is data fro recycler view
             //  int entity_id, String title, String link, String description, String content, String image, String categories_string, List<String> categories
-            data = new ArrayList<Feed> ();
-            data.add (new Feed (1, "Indigo", "https://www.androidauthority.com/feed", "fiance", "", "fiance"));
-            data.add (new Feed (2, "Red", "https://www.androidauthority.com/feed", "arts", "", "arts"));
-            data.add (new Feed (3, "Blue", "https://www.androidauthority.com/feed", "education", "", "education"));
-            data.add (new Feed (4, "Green", "https://www.androidauthority.com/feed", "fiance", "", "fiance"));
-            data.add (new Feed (5, "Amber", "https://www.androidauthority.com/feed", "fiance", "", "fiance"));
-            data.add (new Feed (6, "Deep Orange", "https://www.androidauthority.com/feed", "arts", "", "arts"));
-
+            data = MainApplication.app.getFeeds();
             // 3. create an adapter
             mAdapter = new RecommendAdapter (data, R.layout.feed_row, getContext (), getFragmentManager ());
             // 4. set adapter
@@ -93,7 +86,6 @@ public class RecommendFragment extends BaseFragment{
     @Override
     protected void initView() {
         getTitleBar().setCustomTitle(getString(R.string.title_recommend), false, null).setViewLine(false);
-      //  refreshLayout.setOnRefreshListener(refreshListener);
         btnCategory.setOnClickListener (new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -145,19 +137,11 @@ public class RecommendFragment extends BaseFragment{
 
     private void loadFeedByCategory(String idCategory) {
         data.clear ();
-        if(categoryType.equals ("-1")){
-            data.add (new Feed (1, "try", "http://www.aweber.com/blog/feed/", "fiance", "", "fiance"));
-            data.add (new Feed (2, "Red", "https://www.androidauthority.com/feed/", "arts", "", "arts"));
-            data.add (new Feed (3, "Blue", "https://www.androidauthority.com/feed", "education", "", "education"));
-            data.add (new Feed (4, "Green", "https://www.androidauthority.com/feed", "fiance", "", "fiance"));
-            data.add (new Feed (5, "Amber", "https://www.androidauthority.com/feed", "fiance", "", "fiance"));
-            data.add (new Feed (6, "Deep Orange", "https://www.androidauthority.com/feed", "arts", "", "arts"));
-        }else{
-
-            data.add (new Feed(3,"Blue","https://www.androidauthority.com/feed","description","",idCategory));
-            data.add (new Feed(5,"Amber","https://www.androidauthority.com/feed","description", "",idCategory));
-            data.add (new Feed(6,"Deep Orange","https://www.androidauthority.com/feed","description", "",idCategory));
-
+        for(Feed fe : MainApplication.app.getFeeds()){
+            if(idCategory.equals ("-1"))data.add(fe);
+            else{
+                if(fe.getCategories_string()==idCategory)data.add(fe);
+            }
         }
          mAdapter.notifyDataSetChanged ();
     }
@@ -166,9 +150,7 @@ public class RecommendFragment extends BaseFragment{
 
     @Override
     protected void initData() {
-        adapter = new FeedAdapter (new ArrayList<Feed> (), R.layout.item_product,getContext (),getFragmentManager ());
-//        adapter.setOnItemClickListener(this);
-//        adapter.setOnProductOperationListener(this);
+
     }
 
     private SwipeRefreshLayout.OnRefreshListener refreshListener = new SwipeRefreshLayout.OnRefreshListener() {

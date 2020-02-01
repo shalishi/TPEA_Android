@@ -11,35 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <RelativeLayout
-            android:id="@+id/layout_credit_data"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp44"
-            android:background="?android:attr/selectableItemBackground">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:textStyle="bold"
-                android:id="@+id/my_credit"
-                android:layout_marginStart="@dimen/dp35"
-                android:text="@string/credit_data" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/credit"
-                android:textStyle="bold"
-                android:layout_toEndOf="@+id/my_credit"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/dp15"
-                android:text="" />
-
-            <View
-                style="@style/LineMarginLeft"
-                android:layout_alignParentBottom="true" />
-        </RelativeLayout>
 
 
         <RelativeLayout
@@ -69,85 +41,7 @@
                 android:layout_alignParentBottom="true" />
         </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/layout_password_data"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp44"
-            android:background="?android:attr/selectableItemBackground">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/dp15"
-                android:text="@string/password_data" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/flash2"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/dp15"
-                android:text="" />
-
-            <View
-                style="@style/LineMarginLeft"
-                android:layout_alignParentBottom="true" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/layout_code_data"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp44"
-            android:background="?android:attr/selectableItemBackground">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/dp15"
-                android:text="@string/code_secret" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/flash3"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/dp15"
-                android:text="" />
-
-            <View
-                style="@style/LineMarginLeft"
-                android:layout_alignParentBottom="true" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:id="@+id/layout_history"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp44"
-            android:background="?android:attr/selectableItemBackground">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/dp15"
-                android:text="@string/history" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/flash4"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/dp15"
-                android:text="" />
-
-            <View
-                style="@style/LineMarginLeft"
-                android:layout_alignParentBottom="true" />
-        </RelativeLayout>
         <LinearLayout
             android:id="@+id/layout_logout"
             android:layout_width="@dimen/dp210"

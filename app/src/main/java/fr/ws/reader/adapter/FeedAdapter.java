@@ -70,13 +70,6 @@ public class FeedAdapter extends RecyclerView.Adapter<fr.ws.reader.adapter.FeedA
                 //.centerInside()
                 .into(viewHolder.Feed_image);
 
-       /* Picasso.get()
-                .load("http://i.imgur.com/DvpvklR.png")
-                .placeholder(R.drawable.placeholder)
-                .centerInside()
-                .into(viewHolder.Feed_image);*/
-        //viewHolder.Feed_image.setImageResource(R.drawable.selected);
-
         viewHolder.category.setText(currentFeed.getCategories_string());
 
 
@@ -125,23 +118,6 @@ public class FeedAdapter extends RecyclerView.Adapter<fr.ws.reader.adapter.FeedA
     }
 
 
-    public void updaterss(ArrayList<Feed> list){
-        ContentValues[] cvArray = new ContentValues[1];
-        int i=0;
-        for(Feed Feed : list) {
-            ContentValues values = new ContentValues();
-            String cates="";
-            values.put(Feed.TITLE, Feed.getTitle());
-            values.put(Feed.LINK, Feed.getLink());
-            values.put(Feed.IMAGE, Feed.getImage());
-            values.put(Feed.DESCIRPTION, Feed.getDescription());
-            values.put(Feed.CATEGORY, Feed.getCategories_string());
-            cvArray[i] = values;
-            i++;
-        }
-        mContext.getContentResolver().bulkInsert(mplrssProvider.urlForItems(Feed.NAME,0), cvArray);
-
-    }
 
     @Override
     public int getItemCount() {

@@ -9,13 +9,15 @@ import java.util.List;
 
 public class Feed {
 
-    public Feed(int entity_id, String title, String link, String description, String image, String categories_string) {
+    public Feed(int entity_id, String title, String link, String description, String image, String categories_string,int if_sub) {
         this.entity_id = entity_id;
         this.title = title;
         this.link = link;
         this.description = description;
         this.image = image;
         this.categories_string = categories_string;
+        this.if_sub = if_sub;
+
     }
 
     private int entity_id;
@@ -24,6 +26,17 @@ public class Feed {
     private String description;
     private String image;
     private String categories_string;
+    private int if_sub=0;
+
+    public int getIf_sub() {
+        return if_sub;
+    }
+
+    public void setIf_sub(int if_sub) {
+        this.if_sub = if_sub;
+    }
+
+
 
     public int getEntity_id() {
         return entity_id;
@@ -84,6 +97,7 @@ public class Feed {
                 ", description='" + description + '\'' +
                 ", image='" + image + '\'' +
                 ", categories_string=" + categories_string +
+                ", if_sub=" + if_sub +
                 '}';
     }
 
@@ -95,20 +109,22 @@ public class Feed {
     public static final String IMAGE = "image";
     public static final String CATEGORY = "category";
     public static final String DESCIRPTION = "description";
+    public static final String IfSUB = "if_sub";
 
     public static final String CREATE_TABLE =
             "CREATE TABLE " + NAME +
                     " ( " +
-                    _ID + " integer primary key autoincrement, " +
+                    _ID + " integer primary key, " +
                     TITLE + " string," +
                     LINK + " string unique," +
                     IMAGE + " string," +
                     CATEGORY + " string," +
-                    DESCIRPTION + " string" +
+                    DESCIRPTION + " string," +
+                    IfSUB + " INTEGER" +
                     " ); ";
 
     public static final String DROP_TABLE = "DROP TABLE IF EXISTS " + NAME;
-    public static String[] Columns = new String[]{_ID,TITLE,LINK,IMAGE,CATEGORY,DESCIRPTION};
+    public static String[] Columns = new String[]{_ID,TITLE,LINK,IMAGE,CATEGORY,DESCIRPTION,IfSUB};
 
 
 }

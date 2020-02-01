@@ -90,42 +90,6 @@
             android:focusableInTouchMode="true"
             android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/et_lastname"
-                style="@style/InputEditText"
-                android:hint="@string/user_lastname" />
-
-            <EditText
-                android:id="@+id/et_firstname"
-                style="@style/InputEditText"
-                android:hint="@string/user_firstname" />
-
-            <EditText
-                android:id="@+id/et_telephone"
-                style="@style/InputEditText"
-                android:hint="@string/user_telephone"
-                android:inputType="phone" />
-
-
-            <EditText
-                android:id="@+id/et_address"
-                style="@style/InputEditText"
-                android:layout_height="@dimen/dp80"
-                android:gravity="start"
-                android:hint="@string/user_address"
-                android:paddingBottom="@dimen/dp10"
-                android:paddingTop="@dimen/dp10"
-                android:singleLine="false" />
-
-            <EditText
-                android:id="@+id/et_zip"
-                style="@style/InputEditText"
-                android:hint="@string/user_zip" />
-
-            <EditText
-                android:id="@+id/et_city"
-                style="@style/InputEditText"
-                android:hint="@string/user_city" />
 
 
             <EditText

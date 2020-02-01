@@ -131,7 +131,7 @@ public class MainActivity extends BaseActivity implements OnLoginStatusChangeLis
         long iCurTime = System.currentTimeMillis();
         if (mTimeStampFirst == 0 || iCurTime - mTimeStampFirst > 1500) {
             mTimeStampFirst = iCurTime;
-            showWarning(viewPager, "Click again to exit Delice House");
+            showWarning(viewPager, "Click again to exit rss reader!");
         } else if (iCurTime - mTimeStampFirst <= 1500) {
             finish();
             System.exit(0);
@@ -171,7 +171,7 @@ public class MainActivity extends BaseActivity implements OnLoginStatusChangeLis
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unregisterReceiver(receiver);
+        //unregisterReceiver(receiver);
     }
 
     @Override

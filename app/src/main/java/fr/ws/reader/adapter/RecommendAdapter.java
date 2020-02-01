@@ -18,12 +18,16 @@ import android.widget.Toast;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import fr.ws.reader.R;
+import fr.ws.reader.app.MainApplication;
+import fr.ws.reader.bean.Category;
 import fr.ws.reader.bean.Feed;
 import fr.ws.reader.ui.activity.FeedsArticleActivity;
 import fr.ws.reader.ui.fragment.deleteFeedDialogFragment;
+import fr.ws.reader.util.DatabaseHandler;
 import fr.ws.reader.util.mplrssProvider;
 
 
@@ -59,35 +63,61 @@ public class RecommendAdapter extends RecyclerView.Adapter<fr.ws.reader.adapter.
 
     @Override
     public void onBindViewHolder(@NonNull final fr.ws.reader.adapter.RecommendAdapter.ViewHolder viewHolder, int position) {
-
+        final DatabaseHandler handler = new DatabaseHandler(mContext);
+        List<Feed> subs = handler.getAllFeeds();
         final Feed currentFeed = Feeds.get(position);
 
         Locale.setDefault(Locale.getDefault());
 
         viewHolder.title.setText(currentFeed.getTitle());
-
+        for(Feed f : subs){
+            if(f.getEntity_id()==currentFeed.getEntity_id()){
+                viewHolder.btn_subscripted.setBackgroundResource(R.drawable.ic_file_liked);
+                break;
+            }
+        }
         Picasso.get()
-                .load("http://i.imgur.com/DvpvklR.png")
+                .load(currentFeed.getImage())
                 //.centerInside()
                 .into(viewHolder.Feed_image);
 
-//        Picasso.get()
-//                .load("http://i.imgur.com/DvpvklR.png")
-//                .placeholder(R.drawable.placeholder)
-//                .centerInside()
-//                .into(viewHolder.Feed_image);
-        //viewHolder.Feed_image.setImageResource(R.drawable.selected);
-
-
-        viewHolder.category.setText(currentFeed.getCategories_string());
+        List<Category> cats = MainApplication.app.getCategories();
+        String cat = "";
+        for (Category c : cats){
+            if(c.getEntity_id()==currentFeed.getCategories_string())cat=c.getName();
+        }
+        viewHolder.category.setText(cat);
 
         viewHolder.btn_subscripted.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                Boolean sub = true;
+
+                int id = Feeds.get(viewHolder.getAdapterPosition()).getEntity_id();
                 String title = Feeds.get(viewHolder.getAdapterPosition()).getTitle();
                 String link = Feeds.get(viewHolder.getAdapterPosition ()).getLink ();
                 String des = Feeds.get(viewHolder.getAdapterPosition()).getDescription();
-                viewHolder.btn_subscripted.setBackgroundResource (R.drawable.ic_file_liked);
-                Toast.makeText (mContext,"Is subscripted",Toast.LENGTH_LONG).show ();
+                String image = Feeds.get(viewHolder.getAdapterPosition()).getImage();
+                String category = Feeds.get(viewHolder.getAdapterPosition()).getCategories_string();
+                List<Feed> subs = handler.getAllFeeds();
+                for(Feed f : subs){
+                    if(f.getEntity_id()==id){
+                        sub = false;
+                        break;
+                    }
+                }
+                if(sub) {
+                    if(handler.SubFeed(new Feed(id,title,link,des,image,category,1))>0) {
+                        viewHolder.btn_subscripted.setBackgroundResource(R.drawable.ic_file_liked);
+                    }else{
+                        return;
+                    }
+                }else{
+                    if(handler.desFeed(id)) {
+                        viewHolder.btn_subscripted.setBackgroundResource(R.drawable.ic_readlater_24);
+                    }
+                }
+
+                //Toast.makeText (mContext,"Is subscripted",Toast.LENGTH_LONG).show ();
             }
         });
 
@@ -101,52 +131,11 @@ public class RecommendAdapter extends RecyclerView.Adapter<fr.ws.reader.adapter.
                 intent.putExtra ("title",Feeds.get(viewHolder.getAdapterPosition ()).getTitle ());
                 mContext.startActivity (intent);
 
-//                //show Feed content inside a dialog
-//                FeedView = new WebView(mContext);
-//                FeedView.getSettings().setLoadWithOverviewMode(true);
-//                String title = Feeds.get(viewHolder.getAdapterPosition()).getTitle();
-//                String content = Feeds.get(viewHolder.getAdapterPosition()).getDescription();
-//                String link = Feeds.get(viewHolder.getAdapterPosition()).getLink();
-//                FeedView.getSettings().setJavaScriptEnabled(true);
-//                FeedView.setHorizontalScrollBarEnabled(false);
-//                FeedView.setWebChromeClient(new WebChromeClient());
-//                FeedView.loadDataWithBaseURL(null, "<style>img{display: inline; height: auto; max-width: 100%;} " +
-//
-//                        "</style>\n" + "<style>iframe{ height: auto; width: auto;}" + "</style>\n" + "</br><a href="+link +">Lire l'Feed sur une page web</a></br>"+content, null, "utf-8", null);
-//
-//                android.support.v7.app.AlertDialog alertDialog = new android.support.v7.app.AlertDialog.Builder(mContext).create();
-//                alertDialog.setTitle(title);
-//                alertDialog.setView(FeedView);
-//                alertDialog.setButton(android.support.v7.app.AlertDialog.BUTTON_NEUTRAL, "OK",
-//                        new DialogInterface.OnClickListener() {
-//                            public void onClick(DialogInterface dialog, int which) {
-//                                dialog.dismiss();
-//                            }
-//                        });
-//                alertDialog.show();
-//
-//                ((TextView) alertDialog.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
-            }
+        }
         });
     }
 
 
-    public void updaterss(ArrayList<Feed> list){
-        ContentValues[] cvArray = new ContentValues[1];
-        int i=0;
-        for(Feed Feed : list) {
-            ContentValues values = new ContentValues();
-            values.put(Feed.TITLE, Feed.getTitle());
-            values.put(Feed.LINK, Feed.getLink());
-            values.put(Feed.IMAGE, Feed.getImage());
-            values.put(Feed.DESCIRPTION, Feed.getDescription());
-            values.put(Feed.CATEGORY, Feed.getCategories_string());
-            cvArray[i] = values;
-            i++;
-        }
-        mContext.getContentResolver().bulkInsert(mplrssProvider.urlForItems(Feed.NAME,0), cvArray);
-
-    }
 
     @Override
     public int getItemCount() {

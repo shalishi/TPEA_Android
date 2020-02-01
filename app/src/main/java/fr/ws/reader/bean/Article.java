@@ -140,7 +140,7 @@ public class Article implements java.io.Serializable {
                     LINK + " string unique," +
                     IMAGE + " string," +
                     CATEGORY + " string," +
-                    DESCIRPTION + " string," +
+                    DESCIRPTION + " text," +
                     DATE + " string," +
                     PUBDATE + " string " +
                     " ); ";

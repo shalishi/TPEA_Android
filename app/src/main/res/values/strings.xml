@@ -52,14 +52,14 @@
     <string name="password_data">Changer mots de passe</string>
     <string name="code_secret">Code secret</string>
     <string name="history">Historique</string>
-    <string name="logout">\ue81f Déconnexion</string>
+    <string name="logout">Déconnexion</string>
 
     <!--LoginFirst-->
 
     <!--LoginSecond-->
     <string name="login_msg2">CONNECTEZ-VOUS</string>
     <string name="btn_forgot_password">{fe-github} Mot de passe oublié ?</string>
-    <string name="hint_phone">Votre numéro portable</string>
+    <string name="hint_email">Votre adresse email</string>
     <string name="hint_pass">Votre mot de passe</string>
     <string name="hint_fp_email">Votre numéro portable.</string>
     <string name="dialog_fp_title">Retrouver mon compte</string>

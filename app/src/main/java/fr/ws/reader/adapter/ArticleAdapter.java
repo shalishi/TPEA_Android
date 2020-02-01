@@ -75,7 +75,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
 
         Locale.setDefault(Locale.getDefault());
         Date date = currentArticle.getPubDate();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss aa");
         final String pubDateString = sdf.format(date);
 
         viewHolder.title.setText(currentArticle.getTitle());
@@ -84,14 +84,6 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
                 .load(currentArticle.getImage())
                 //.centerInside()
                 .into(viewHolder.article_image);
-
-       /* Picasso.get()
-                .load("http://i.imgur.com/DvpvklR.png")
-                .placeholder(R.drawable.placeholder)
-                .centerInside()
-                .into(viewHolder.article_image);*/
-       //viewHolder.article_image.setImageResource(R.drawable.selected);
-
 
         viewHolder.pubDate.setText(pubDateString);
         viewHolder.category.setText(currentArticle.getcategories_string ());
@@ -114,11 +106,11 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
                 newArticle.getcategories_string ();
                 DatabaseHandler handler = new DatabaseHandler(mContext);
                 if(handler.saveArticle(newArticle)>0){
-                    Toast.makeText(mContext,"Download Success!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext,"Save Success!",Toast.LENGTH_SHORT).show();
                     viewHolder.btn_download.setVisibility(View.INVISIBLE);
                     updaterss(list);
                 }else{
-                    Toast.makeText(mContext,"Download failed!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext,"Save failed!",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -181,7 +173,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
             cvArray[i] = values;
             i++;
         }
-        mContext.getContentResolver().bulkInsert(mplrssProvider.urlForItems(Article.NAME,0), cvArray);
+        //mContext.getContentResolver().bulkInsert(mplrssProvider.urlForItems(Article.NAME,0), cvArray);
 
     }
 

@@ -40,7 +40,7 @@ public class MainApplication extends Application {
     public Context mContext;
     public Account account;
     public User user;
-    public List<Feed> subscribedfeeds;
+    public ArrayList<Feed> feeds;
     public List<Trier> triers;
     public List<Category> categories;
     public Country country;
@@ -161,61 +161,28 @@ public class MainApplication extends Application {
 
 
     /**
-     * get subscribed feeds
+     * get feeds
      *
      * @return
      */
-    public List<Feed> getSubscribedFeeds() {
-        /*String str = D.getInstance(app).getString(Constants.CATEGORIES_INFO, "");
-        if (str.isEmpty()) {
-            return null;
-        } else {
-            subscribedfeeds = new Gson().fromJson(str, new TypeToken<List<Feed>>() {
-            }.getType());
-        }*/
-        subscribedfeeds = new ArrayList<Feed>();
-        subscribedfeeds.add(new Feed(1,"Aweber blog","http://www.aweber.com/blog/feed/","","",""));
-        subscribedfeeds.add(new Feed(2,"Android authority","https://www.androidauthority.com/feed","","",""));
-        return subscribedfeeds;
+    public ArrayList<Feed> getFeeds() {
+        feeds = new ArrayList<Feed>();
+        feeds.add (new Feed (1, "Aweber blog", "http://www.aweber.com/blog/feed/", "fiance", "http://i.imgur.com/DvpvklR.png", "1",0));
+        feeds.add (new Feed (2, "Android authority", "https://www.androidauthority.com/feed", "arts", "http://i.imgur.com/DvpvklR.png", "2",0));
+        feeds.add (new Feed (3, "Blue", "https://serica.blog/feed", "education", "https://oldchinesebooks.files.wordpress.com/2019/03/sinica_91-2.jpg", "3",0));
+        feeds.add (new Feed (4, "Green", "https://epubw.com/feed", "fiance", " https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGy_P_1SUE4EVDUQsgT7eigb8LbS-x8LgYs8z1WM47rDzAtZ4gFw&s", "1",0));
+        feeds.add (new Feed (5, "Amber", "http://southasiawatch.tw/feed", "fiance", "https://southasiawatch.tw/wp-content/uploads/logo-2.png", "1",0));
+        feeds.add (new Feed (6, "Deep Orange", "https://plausistory.blog/feed/", "arts", "https://s0.wp.com/i/buttonw-com.png", "2",0));
+
+        return feeds;
     }
 
-    /**
-     * 获取排序列表
-     *
-     * @return
-     */
-    public List<Trier> getTriers() {
-        if (triers == null) {
-            String str = D.getInstance(app).getString(Constants.TRIER_INFO, "");
-            if (str.isEmpty()) {
-                return null;
-            } else {
-                triers = new Gson().fromJson(str, new TypeToken<List<Trier>>() {
-                }.getType());
-                setTriers(triers);
-            }
-        }
-        return triers;
-    }
 
-    /**
-     * 获取排序列表
-     *
-     * @return
-     */
     public List<Category> getCategories() {
-        /*if (categories == null) {
-            String str = D.getInstance(app).getString(Constants.CATEGORIES_INFO, "");
-            if (str.isEmpty()) {
-                return null;
-            } else {
-                categories = new Gson().fromJson(str, new TypeToken<List<Category>>() {
-                }.getType());
-                setCategories (categories);
-            }
-        }*/
         categories=new ArrayList<Category>();
-        categories.add (new Category ("123","fiance"));
+        categories.add (new Category ("1","fiance"));
+        categories.add (new Category ("2","art"));
+        categories.add (new Category ("3","education"));
         categories.add (new Category ("-1","all"));
         return categories;
     }

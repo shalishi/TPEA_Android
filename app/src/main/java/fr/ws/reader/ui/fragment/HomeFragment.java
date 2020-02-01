@@ -32,6 +32,7 @@ import fr.ws.reader.base.BaseFragment;
 import fr.ws.reader.bean.Article;
 import fr.ws.reader.bean.Feed;
 import fr.ws.reader.interfaces.OnItemClickListener;
+import fr.ws.reader.util.DatabaseHandler;
 import fr.ws.reader.util.Parser;
 import fr.ws.reader.view.MyPopupWindow;
 import fr.ws.reader.view.MySwipeRefreshLayout;
@@ -60,9 +61,9 @@ public class HomeFragment extends BaseFragment {
     private MyPopupWindow feedsWindow;
     private FeedSimpleAdapter FeedListAdapter;
     private List<Feed> feeds;
-    private List<Article> articles;
-    private ArticleAdapter articleAdapter;
-
+    private ArrayList<Article> articles = new ArrayList<Article>();
+    private DatabaseHandler handler ;
+    private PopupFeedsAdapter popupFeedsAdapter;
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_home;
@@ -70,9 +71,10 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void initView() {
+        handler = new DatabaseHandler(getContext());
+        FragmentManager fm = getFragmentManager();
         refreshLayout.setOnRefreshListener(refreshListener);
         lvHomeType.setLayoutManager(new LinearLayoutManager(getActivity()));
-
         Typeface font = Typeface.createFromAsset(getActivity().getAssets(), "fontello.ttf");
         tv_Feed.setTypeface(font);
         tv_Feed.setText("\ue822");
@@ -81,11 +83,23 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
+        refreshArticles();
+
     }
 
+    private void refreshArticles(){
+        feeds=handler.getAllFeeds();
+        articles.clear();
+        if(feeds.size()>0) {
+            for (Feed f : feeds) {
+                loadFeed(f.getLink());
+            }
+        }
+
+        refreshLayout.stopRefresh();
+    }
     @Override
     protected void initData() {
-        FeedListAdapter = new FeedSimpleAdapter(lvHomeType, new ArrayList<Feed>(), R.layout.item_feed,getContext());
         btn_Feed.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -102,12 +116,7 @@ public class HomeFragment extends BaseFragment {
 
             }
         });
-
-        ArrayList<Article> articles = new ArrayList<>();
-        articleAdapter  = new ArticleAdapter(articles,R.layout.article_row,getActivity(),getFragmentManager());
-        lvHomeType.setAdapter(articleAdapter);
         isFirstLoad = false;
-        loadFeed("http://www.aweber.com/blog/feed/");
     }
 
 
@@ -121,11 +130,13 @@ public class HomeFragment extends BaseFragment {
             public void onTaskCompleted(ArrayList<Article> list) {
                 //list is an Array List with all article's information
                 //set the adapter to recycler view
-                FragmentManager fm = getFragmentManager();
-                articleAdapter = new ArticleAdapter(list, R.layout.article_row, getContext(),fm);
+                ArrayList<Article> tmp = new ArrayList<>();
+                tmp.addAll(articles);
+                articles.clear();
+                articles.addAll(list);
+                articles.addAll(tmp);
+                ArticleAdapter articleAdapter = new ArticleAdapter(articles, R.layout.article_row, getContext(),getFragmentManager());
                 lvHomeType.setAdapter(articleAdapter);
-                refreshLayout.stopRefresh();
-
             }
 
             //what to do in case of error
@@ -167,18 +178,10 @@ public class HomeFragment extends BaseFragment {
     private SwipeRefreshLayout.OnRefreshListener refreshListener = new SwipeRefreshLayout.OnRefreshListener() {
         @Override
         public void onRefresh() {
-            loadFeed("http://www.aweber.com/blog/feed/");
+            refreshArticles();
         }
     };
 
-    /**
-     * download article to read later
-     */
-    public void downloadArtile(View v){
-
-
-
-    }
 
     /**
      * feeds popup
@@ -188,9 +191,15 @@ public class HomeFragment extends BaseFragment {
         RecyclerView lvArray = popupView.findViewById(R.id.lv_array);
         lvArray.setLayoutManager(new LinearLayoutManager(getContext()));
         View outside = popupView.findViewById(R.id.layout_outside);
+        handler = new DatabaseHandler(getContext());
         final LinearLayoutManager llm = (LinearLayoutManager) lvHomeType.getLayoutManager();
-        final PopupFeedsAdapter adapter = new PopupFeedsAdapter(lvArray, MainApplication.app.getSubscribedFeeds(), R.layout.item_popup_array);
-        adapter.setOnItemClickListener(new OnItemClickListener<Feed>() {
+        feeds = handler.getAllFeeds();
+        popupFeedsAdapter = new PopupFeedsAdapter(lvArray, feeds, R.layout.item_popup_array);
+        popupFeedsAdapter.clear();
+        feeds = handler.getAllFeeds();
+        popupFeedsAdapter.addAll(feeds);
+        popupFeedsAdapter.notifyDataSetChanged();
+        popupFeedsAdapter.setOnItemClickListener(new OnItemClickListener<Feed>() {
             @Override
             public void onItemClick(ViewGroup parent, View view, Feed Feed, int position) {
                 feedsWindow.dismiss();
@@ -202,16 +211,14 @@ public class HomeFragment extends BaseFragment {
                 return false;
             }
         });
-        if (feedsWindow == null) {
+
             feedsWindow = new MyPopupWindow(popupView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             feedsWindow.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#50000000")));
             feedsWindow.setFocusable(true);
             feedsWindow.setOutsideTouchable(true);
             feedsWindow.update();
             feedsWindow.showAsDropDown(view_line);
-        } else {
-            feedsWindow.showAsDropDown(view_line);
-        }
+
         //dismiss PopupWindow
         outside.setOnClickListener(new View.OnClickListener() {
             @Override

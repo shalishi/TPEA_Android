@@ -50,8 +50,6 @@ public class LoginFirstActivity extends BaseActivity implements OnLoginStatusCha
     EditText et_email;
     @BindView(R.id.et_password)
     EditText etPassword;
-    @BindView(R.id.tv_forgot_password)
-    IconTextView tvForgotPassword;
 
 
     private OnMessageReceiver receiver;
@@ -67,23 +65,12 @@ public class LoginFirstActivity extends BaseActivity implements OnLoginStatusCha
     protected void initView() {
         receiver = new OnMessageReceiver(this);
         registerReceiver(receiver, Config.ACTION_LOGIN, Config.ACTION_LOGOUT);
-        tvForgotPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showForgotPassword(mContext).show();
-            }
-        });
+
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        /*String phone = getIntent().getExtras().getString("phone",null);
-        String password = getIntent().getExtras().getString("password",null);
-        if(phone!=null && password!=null){
-            et_phone.setText(phone);
-            etPassword.setText(password);
-        }*/
     }
     @Override
     protected void initData() {
@@ -101,8 +88,8 @@ public class LoginFirstActivity extends BaseActivity implements OnLoginStatusCha
      */
     private void loadBanner() {
         final List<Integer> images = new ArrayList<>();
-        images.add(R.mipmap.background);
         images.add(R.mipmap.backgroud1);
+        images.add(R.mipmap.background);
         images.add(R.mipmap.background2);
         banner.setAdapter(this);
         banner.setData(images, null);
@@ -128,8 +115,9 @@ public class LoginFirstActivity extends BaseActivity implements OnLoginStatusCha
      * @param view
      */
     public void login(View view) {
+        showLoading();
         String email = et_email.getText().toString();
-        String pass = etPassword.getText().toString();
+        final String pass = etPassword.getText().toString();
         if (email.isEmpty() || pass.isEmpty()) {
             return;
         }
@@ -145,60 +133,25 @@ public class LoginFirstActivity extends BaseActivity implements OnLoginStatusCha
                             Account acc = new Account();
                             acc.setIsActive(1);
                             acc.setEmail(user.getEmail());
+                            acc.setPassword(pass);
                             MainApplication.app.setAccount(acc);
                             account = MainApplication.app.getAccount();
                             if (account.getIsActive() == 1) {
+                                showSuccess(etPassword,"Authentication success!");
+                                sendBroadcast(Config.ACTION_LOGIN);
+                                dismissLoading();
+                                finish();
                                 startActivity(MainActivity.class);
                             }
-                            sendBroadcast(Config.ACTION_LOGIN);
-                            startActivity(MainActivity.class);
-                            finish();
                         } else {
+                            dismissLoading();
                             // If sign in fails, display a message to the user.
                             Log.w("authentification", "signInWithEmail:failure", task.getException());
-                            showError(etPassword,"Authentication failed");
+                            showError(etPassword,"Authentication failed!");
                             //updateUI(null);
                         }
                     }
                 });
-    }
-
-    /**
-     * 忘记密码提示框
-     *
-     * @param context
-     * @return
-     */
-    public AlertDialog showForgotPassword(Context context) {
-        final AlertDialog builder = new AlertDialog.Builder(context, R.style.AlertDialog).create();
-        final EditText editText = new EditText(context);
-        editText.setHint(getString(R.string.hint_fp_email));
-        editText.setHintTextColor(editText.getContext().getResources().getColor(R.color.hint_text));
-        editText.setTextSize(15);
-        builder.setTitle(getString(R.string.dialog_fp_title));
-        builder.setMessage(getString(R.string.dialog_fp_msg));
-        builder.setView(editText);
-        builder.setButton(DialogInterface.BUTTON_NEGATIVE, getString(R.string.cancel), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.dismiss();
-            }
-        });
-        builder.setButton(DialogInterface.BUTTON_POSITIVE, getString(R.string.send), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-                String email = editText.getText().toString().trim();
-                if (StringUtils.isEmail(email) || StringUtils.isNumber(email)) {
-                    //忘记密码接口
-                    QRequest.forgotPassword(email, callback);
-                    showLoading().show();
-                }
-            }
-        });
-        builder.setCancelable(true);
-        builder.setCanceledOnTouchOutside(false);
-        return builder;
     }
 
 

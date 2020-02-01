@@ -124,6 +124,7 @@ public class RegisterActivity extends BaseActivity {
      * @param view
      */
     public void onRegister(View view) {
+        showLoading();
         if (checkContent()) {
             //普通用户注册提交接口
             mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -135,16 +136,20 @@ public class RegisterActivity extends BaseActivity {
                         Account acc = new Account();
                         acc.setIsActive(1);
                         acc.setEmail(user.getEmail());
+                        acc.setPassword(password);
                         MainApplication.app.setAccount(acc);
                         Account account = MainApplication.app.getAccount();
                         if (account.getIsActive() == 1) {
                             startActivity(MainActivity.class);
                         }
+                        showSuccess(et_email,"Registration sucess!");
                         sendBroadcast(Config.ACTION_LOGIN);
+                        dismissLoading();
                         startActivity(MainActivity.class);
                         finish();
 
                     } else {
+                        dismissLoading();
                         showError(et_email,"Something went wrong!");
                         startActivity(MainActivity.class);
                     }

@@ -41,26 +41,24 @@ public class FeedsArticleActivity extends BaseActivity{
     View view_line;
     @BindView(R.id.tv_Feed)
     TextView tv_Feed;
-    @BindView(R.id.tv_cart)
-    TextView tv_cart;
     @BindView(R.id.btn_Feed)
     LinearLayout btn_Feed;
-    @BindView(R.id.btn_cart)
-    RelativeLayout btn_cart;
+
     private MyPopupWindow feedsWindow;
     private FeedSimpleAdapter FeedListAdapter;
     private List<Feed> feeds;
     private FeedAdapter feedAdapter;
     private ArticleAdapter articleAdapter;
-
+    private String ti;
+    private String url;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feeds_article);
         Intent intent = getIntent();
-        String ti= intent.getStringExtra("title");
+         ti= intent.getStringExtra("title");
         title.setText (ti);
-        String url = intent.getStringExtra("url");
+         url = intent.getStringExtra("url");
         loadFeed (url);
     }
 
@@ -74,16 +72,19 @@ public class FeedsArticleActivity extends BaseActivity{
         lvHomeType.setLayoutManager(new LinearLayoutManager (this));
         Typeface font = Typeface.createFromAsset(this.getAssets(), "fontello.ttf");
         tv_Feed.setTypeface(font);
-        tv_Feed.setText("\ue822");
+        tv_Feed.setText("\ue819");
     }
 
+    public void goBack(View v){
+        finish();
+    }
     /**
      * refresh listener
      */
     private SwipeRefreshLayout.OnRefreshListener refreshListener = new SwipeRefreshLayout.OnRefreshListener() {
         @Override
         public void onRefresh() {
-            loadFeed("http://www.aweber.com/blog/feed/");
+            loadFeed(url);
         }
     };
 
