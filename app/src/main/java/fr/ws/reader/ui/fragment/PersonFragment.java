@@ -40,7 +40,6 @@ public class PersonFragment extends BaseFragment implements View.OnClickListener
     LinearLayout layoutPerson;
     @BindView(R.id.credit)
     TextView credit;
-    private User user;
     private Float amount=null;
     private Account account;
     @Override
@@ -104,12 +103,12 @@ public class PersonFragment extends BaseFragment implements View.OnClickListener
 
     @Override
     protected void lazyLoad() {
-      //  refreshUserInfo();
+      // refreshUserInfo();
     }
 
     @Override
     protected void userVisible() {
-        refreshUserInfo();
+
     }
 
     @Override
@@ -145,18 +144,4 @@ public class PersonFragment extends BaseFragment implements View.OnClickListener
 
     }
 
-    /**
-     * 刷新个人信息数据
-     */
-    public void refreshUserInfo() {
-        user = MainApplication.app.getUser();
-        Account account = MainApplication.app.getAccount();
-        if (account != null) {
-            //
-            //QRequest.login(account.getEmail(), account.getPassword(), callback);
-            layoutPerson.setVisibility(View.VISIBLE);
-        } else {
-            layoutPerson.setVisibility(View.GONE);
-        }
-    }
 }

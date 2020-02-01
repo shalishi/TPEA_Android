@@ -91,10 +91,10 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/et_telephone"
+                android:id="@+id/et_email"
                 style="@style/InputEditText"
-                android:hint="@string/user_telephone"
-                android:inputType="phone" />
+                android:hint="@string/user_email"
+                android:inputType="textEmailAddress" />
 
             <EditText
                 android:id="@+id/et_password"

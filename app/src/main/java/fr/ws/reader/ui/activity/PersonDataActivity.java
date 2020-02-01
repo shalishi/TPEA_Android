@@ -79,52 +79,25 @@ public class PersonDataActivity extends BaseActivity {
     protected void initData() {
         Account account = MainApplication.app.getAccount();
         if (account != null) {
-            //获取个人信息
-            QRequest.login(account.getTelephone(), account.getPassword(), callback);
-            showLoading().show();
+            etEmail.setText(account.getEmail());
+            scrollView.setVisibility(View.VISIBLE);
         }
     }
 
-
-    /**
-     * 绑定用户数据
-     *
-     * @param user 用户数据
-     */
-    private void bindData(User user) {
-        etLastname.setText(user.getLastname());    //名
-        etFirstname.setText(user.getFirstname());   //姓
-        etTelephone.setText(user.getTelephone());     //电话
-        etAddress.setText(user.getStreet());     //地址，街道
-        etZip.setText(user.getZip());       //邮编
-        etCity.setText(user.getCity());       //城市
-        etEmail.setText(user.getEmail());     //邮箱
-        scrollView.setVisibility(View.VISIBLE);
-    }
 
     @Override
     public void onSuccess(String data, int id) throws JSONException {
-        JSONObject js = new JSONObject(data);
-        switch (id) {
-            //个人信息
-            case QRequest.LOGIN:
-                user = getGson().fromJson(js.optString("user"), User.class);
-                MainApplication.app.setUser(user);
-                bindData(user);
-                break;
-            default:
-                break;
-        }
+
     }
 
     @Override
     public void onFailure(String msg, String code, int id) throws JSONException {
-        showError(etAddress, msg);
+        showError(etEmail, msg);
     }
 
     @Override
     public void onNetError(int id) {
-        showNetError(etAddress);
+        showNetError(etEmail);
     }
 
 

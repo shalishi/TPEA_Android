@@ -44,6 +44,7 @@
             android:windowSoftInputMode="adjustPan" >
 
         </activity>
+        <activity android:name="fr.ws.reader.ui.activity.FeedsArticleActivity"/>
 
         <activity android:name="fr.ws.reader.ui.activity.RegisterActivity" />
         <activity
@@ -53,6 +54,15 @@
         <activity
             android:name="fr.ws.reader.ui.activity.NetErrorActivity"
             android:launchMode="singleTask" />
+        <provider
+            android:name=".util.mplrssProvider"
+            android:authorities="fr.reader.mplrssProvider"
+            android:enabled="true"
+            android:exported="true"></provider>
+        <service
+            android:name=".util.DownloadService"
+            android:enabled="true"
+            android:exported="false" />
     </application>
 
 </manifest>

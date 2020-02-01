@@ -41,14 +41,14 @@
                     android:inputType="text"
                     android:textColorHint="@color/content_text" />
                 <EditText
-                    android:id="@+id/et_phone"
+                    android:id="@+id/et_email"
                     style="@style/InputEditText"
                     android:layout_height="@dimen/dp44"
                     android:layout_marginTop="@dimen/dp30"
                     android:background="@drawable/edit_text_bg"
-                    android:hint="@string/hint_phone"
+                    android:hint="@string/user_email"
                     android:text=""
-                    android:inputType="number"
+                    android:inputType="textEmailAddress"
                     android:textColorHint="@color/content_text" />
 
                 <EditText

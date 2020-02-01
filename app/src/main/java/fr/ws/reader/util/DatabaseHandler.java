@@ -45,9 +45,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         onCreate(db);
         db.close();
     }
-
-
-
     // Getting article Count
     public int getProductsCount() {
         String countQuery = "SELECT  * FROM " + Article.NAME;
@@ -61,6 +58,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     // code to add the new article
     public long saveArticle(Article article) {
         SQLiteDatabase db = this.getWritableDatabase();
+        System.out.println ("============================================saveArticle");
             ContentValues values = new ContentValues();
             values.put(Article.TITLE, article.getTitle());
             values.put(Article.DESCIRPTION, article.getDescription());
@@ -72,5 +70,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close(); // Closing database connection
         return id;
     }
+
+
 
 }

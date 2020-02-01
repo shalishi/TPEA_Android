@@ -2,12 +2,20 @@ package fr.ws.reader.ui.activity;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.nfc.Tag;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.joanzapata.iconify.widget.IconTextView;
 
 import org.json.JSONException;
@@ -38,8 +46,8 @@ public class LoginFirstActivity extends BaseActivity implements OnLoginStatusCha
 
     @BindView(R.id.banner)
     BGABanner banner;
-    @BindView(R.id.et_phone)
-    EditText et_phone;
+    @BindView(R.id.et_email)
+    EditText et_email;
     @BindView(R.id.et_password)
     EditText etPassword;
     @BindView(R.id.tv_forgot_password)
@@ -48,7 +56,7 @@ public class LoginFirstActivity extends BaseActivity implements OnLoginStatusCha
 
     private OnMessageReceiver receiver;
     private Account account;
-
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,8 +73,6 @@ public class LoginFirstActivity extends BaseActivity implements OnLoginStatusCha
                 showForgotPassword(mContext).show();
             }
         });
-
-
     }
 
     @Override
@@ -81,10 +87,11 @@ public class LoginFirstActivity extends BaseActivity implements OnLoginStatusCha
     }
     @Override
     protected void initData() {
+        mAuth = FirebaseAuth.getInstance();
         loadBanner();      //轮播图
         account = MainApplication.app.getAccount();
         if (account != null) {
-            et_phone.setText(account.getTelephone());
+            et_email.setText(account.getEmail());
             etPassword.setText(account.getPassword());
         }
     }
@@ -94,69 +101,25 @@ public class LoginFirstActivity extends BaseActivity implements OnLoginStatusCha
      */
     private void loadBanner() {
         final List<Integer> images = new ArrayList<>();
-        images.add(R.mipmap.slide1);
-        images.add(R.mipmap.slide2);
-        images.add(R.mipmap.slide3);
+        images.add(R.mipmap.background);
+        images.add(R.mipmap.backgroud1);
+        images.add(R.mipmap.background2);
         banner.setAdapter(this);
         banner.setData(images, null);
     }
 
     @Override
     public void onSuccess(String data, int id) throws JSONException {
-        switch (id) {
-            //登录接口
-            case QRequest.LOGIN:
-                //L.d(data);
-                JSONObject js = new JSONObject(data);
-                if(!js.isNull("user")) {
-                    Account account = getGson().fromJson(js.optString("user"), Account.class);
-                    account.setPassword(D.getInstance(this).getString("password", ""));
-                    MainApplication.app.setAccount(account);
-                    if (account.getIsActive() == 1) {
-                        startActivity(MainActivity.class);
-                    }
-                    sendBroadcast(Config.ACTION_LOGIN);
-                    finish();
-                }else{
-                    showError(et_phone,js.optString("response"));
-                }
-                break;
-            //忘记密码
-            case QRequest.FORGOT_PASSWORD:
-                JSONObject js3 = new JSONObject(data);
-                showSuccess(et_phone, js3.optString("ok"));
-                break;
-            default:
-                break;
-        }
     }
 
     @Override
     public void onFailure(String msg, String code, int id) throws JSONException {
-        Integer error_code = Integer.parseInt(msg);
-        String message="";
-        switch (id) {
-            case QRequest.FORGOT_PASSWORD:
-            switch (error_code) {
-                case 1:
-                    message = getString(R.string.resetpwd_error1);
-                    break;
-                case 4:
-                    message = getString(R.string.error4);
-                    break;
-                default:
-                    break;
-            }break;
-            default:
-                break;
-        }
-        showError(et_phone, message);
     }
 
     @Override
     public void onNetError(int id) {
-        SnackbarUtil.shortSnackbar(et_phone, "Net Error.", SnackbarUtil.Alert).show();
-        showNetError(et_phone);
+        SnackbarUtil.shortSnackbar(et_email, "Net Error.", SnackbarUtil.Alert).show();
+        showNetError(et_email);
     }
 
     /**
@@ -165,16 +128,39 @@ public class LoginFirstActivity extends BaseActivity implements OnLoginStatusCha
      * @param view
      */
     public void login(View view) {
-        startActivity(MainActivity.class);
-        finish();
-        String phone = et_phone.getText().toString();
+        String email = et_email.getText().toString();
         String pass = etPassword.getText().toString();
-        if (phone.isEmpty() || pass.isEmpty()) {
+        if (email.isEmpty() || pass.isEmpty()) {
             return;
         }
         D.getInstance(this).putString("password",pass);
-        QRequest.login(phone, pass, callback);
-        showLoading().show();
+        mAuth.signInWithEmailAndPassword(email, pass)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d("authentification", "signInWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            Account acc = new Account();
+                            acc.setIsActive(1);
+                            acc.setEmail(user.getEmail());
+                            MainApplication.app.setAccount(acc);
+                            account = MainApplication.app.getAccount();
+                            if (account.getIsActive() == 1) {
+                                startActivity(MainActivity.class);
+                            }
+                            sendBroadcast(Config.ACTION_LOGIN);
+                            startActivity(MainActivity.class);
+                            finish();
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w("authentification", "signInWithEmail:failure", task.getException());
+                            showError(etPassword,"Authentication failed");
+                            //updateUI(null);
+                        }
+                    }
+                });
     }
 
     /**

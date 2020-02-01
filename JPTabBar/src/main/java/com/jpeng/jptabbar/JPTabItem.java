@@ -19,6 +19,7 @@ import com.jpeng.jptabbar.badgeview.Badgeable;
 import com.jpeng.jptabbar.badgeview.DragDismissDelegate;
 import com.nineoldandroids.animation.ObjectAnimator;
 
+
 /**
  * Created by jpeng on 16-11-13.
  * TabBarItem类

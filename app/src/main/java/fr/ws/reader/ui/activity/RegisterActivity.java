@@ -2,16 +2,26 @@ package fr.ws.reader.ui.activity;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import butterknife.BindView;
 import fr.ws.reader.R;
+import fr.ws.reader.app.Config;
+import fr.ws.reader.app.MainApplication;
 import fr.ws.reader.base.BaseActivity;
+import fr.ws.reader.bean.Account;
 import fr.ws.reader.request.QRequest;
 import fr.ws.reader.util.EditTextWatcher;
 
@@ -20,13 +30,14 @@ public class RegisterActivity extends BaseActivity {
     EditText etPassword;
     @BindView(R.id.et_repassword)
     EditText etRepassword;
-    @BindView(R.id.et_telephone)
-    EditText etTelephone;
+    @BindView(R.id.et_email)
+    EditText et_email;
     @BindView(R.id.tv_return)
     TextView tv_return;
-    private String phone = "";
+    private String email = "";
     private String password = "";
     private String repassword = "";
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +47,7 @@ public class RegisterActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        new EditTextWatcher(etTelephone);
+        new EditTextWatcher(et_email);
         new EditTextWatcher(etPassword);
         new EditTextWatcher(etRepassword);
         Typeface font = Typeface.createFromAsset(getAssets(), "fontello.ttf");
@@ -46,7 +57,7 @@ public class RegisterActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-
+        mAuth = FirebaseAuth.getInstance();
     }
 
 
@@ -58,7 +69,7 @@ public class RegisterActivity extends BaseActivity {
                 JSONObject js = new JSONObject(data);
                 if(!js.isNull("user")) {
                     Bundle bundle = new Bundle();
-                    bundle.putString("phone", phone);
+                    bundle.putString("email", email);
                     bundle.putString("password", password);
                     //startActivity(LoginFirstActivity.class, bundle);
                     finish();
@@ -115,7 +126,30 @@ public class RegisterActivity extends BaseActivity {
     public void onRegister(View view) {
         if (checkContent()) {
             //普通用户注册提交接口
-            QRequest.Register(phone,password, repassword, callback);
+            mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (!task.isSuccessful()) {
+                        showSuccess(et_email, "SignUp unsuccessful!");
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        Account acc = new Account();
+                        acc.setIsActive(1);
+                        acc.setEmail(user.getEmail());
+                        MainApplication.app.setAccount(acc);
+                        Account account = MainApplication.app.getAccount();
+                        if (account.getIsActive() == 1) {
+                            startActivity(MainActivity.class);
+                        }
+                        sendBroadcast(Config.ACTION_LOGIN);
+                        startActivity(MainActivity.class);
+                        finish();
+
+                    } else {
+                        showError(et_email,"Something went wrong!");
+                        startActivity(MainActivity.class);
+                    }
+                }
+            });
             showLoading().show();
         }
     }
@@ -126,11 +160,11 @@ public class RegisterActivity extends BaseActivity {
      * @return
      */
     public boolean checkContent() {
-        phone = etTelephone.getText().toString().trim();
+        email = et_email.getText().toString().trim();
         password = etPassword.getText().toString().trim();
         repassword = etRepassword.getText().toString().trim();
         //判断是否为空
-        if (phone.isEmpty())
+        if (email.isEmpty())
             return false;
         if (password.isEmpty())
             return false;

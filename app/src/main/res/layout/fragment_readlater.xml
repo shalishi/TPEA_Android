@@ -11,7 +11,7 @@
         android:fitsSystemWindows="true">
 
         <LinearLayout
-            android:layout_width="@dimen/title_width"
+            android:layout_width="@dimen/dp210"
             android:layout_height="@dimen/title_height"
             android:layout_centerHorizontal="true"
             android:gravity="center"
@@ -48,17 +48,17 @@
             android:id="@+id/btn_Feed"
             android:layout_alignParentLeft="true"
             android:layout_centerHorizontal="true"
-            android:layout_width="@dimen/title_left_width"
+            android:layout_width="100dp"
             android:layout_height="@dimen/title_height">
 
-            <TextView
-                android:id="@+id/tv_Feed"
-                android:layout_width="0dp"
+            <EditText
+                android:id="@+id/find_text"
+                android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="?android:attr/selectableItemBackground"
                 android:gravity="center"
-                android:text=""
+                android:hint="Search for..."
                 android:textColor="@drawable/text_color"
                 android:textSize="@dimen/font_size_largest" />
         </LinearLayout>
@@ -71,8 +71,8 @@
             android:layout_width="@dimen/dp50"
             android:layout_height="@dimen/title_height">
 
-            <TextView
-                android:id="@+id/tv_cart"
+            <ImageView
+                android:id="@+id/iv_cart"
                 android:layout_width="@dimen/dp30"
                 android:layout_height="30dp"
                 android:layout_centerVertical="true"
@@ -94,18 +94,16 @@
     </RelativeLayout>
 
 
+
     <fr.ws.reader.view.MySwipeRefreshLayout
         android:id="@+id/refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/lv_home_type"
+            android:id="@+id/lv_readerlater"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp10"
-            android:paddingEnd="@dimen/dp10"
-            android:paddingStart="@dimen/dp10" />
+            android:layout_height="wrap_content" />
     </fr.ws.reader.view.MySwipeRefreshLayout>
 
 </LinearLayout>

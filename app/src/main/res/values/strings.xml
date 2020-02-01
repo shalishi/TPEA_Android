@@ -19,10 +19,13 @@
     <string name="tab_home">MENU</string>
     <string name="tab_person">COMPTE</string>
     <string name="tab_sub">RECOMMEND</string>
+    <string name="readlater_sub">READ LATER</string>
 
     <string name="cancel">Annuler</string>
     <string name="send">Envoyer</string>
     <string name="price">Prix de pièce:</string>
+    <string name="delete_by_date_text">Entrez date:</string>
+    <string name="My_favorite">Mes download articles</string>
 
     <!--用户文字-->
     <string name="user_email">E-mail *</string>

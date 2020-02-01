@@ -2,30 +2,29 @@ package fr.ws.reader.adapter;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.graphics.drawable.Drawable;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-
-import fr.ws.reader.R;
-import fr.ws.reader.bean.Feed;
-import fr.ws.reader.ui.fragment.deleteFeedDialogFragment;
-import fr.ws.reader.util.mplrssProvider;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Locale;
+
+import fr.ws.reader.R;
+import fr.ws.reader.bean.Feed;
+import fr.ws.reader.ui.activity.FeedsArticleActivity;
+import fr.ws.reader.ui.fragment.deleteFeedDialogFragment;
+import fr.ws.reader.util.mplrssProvider;
 
 
 
@@ -82,10 +81,13 @@ public class RecommendAdapter extends RecyclerView.Adapter<fr.ws.reader.adapter.
 
         viewHolder.category.setText(currentFeed.getCategories_string());
 
-        viewHolder.btn_delete.setOnClickListener(new View.OnClickListener() {
+        viewHolder.btn_subscripted.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                deleteFeedDialogFragment_m = deleteFeedDialogFragment.newInstance(currentFeed.getEntity_id ());
-                deleteFeedDialogFragment_m.show(mfm, "fragment_delete_link");
+                String title = Feeds.get(viewHolder.getAdapterPosition()).getTitle();
+                String link = Feeds.get(viewHolder.getAdapterPosition ()).getLink ();
+                String des = Feeds.get(viewHolder.getAdapterPosition()).getDescription();
+                viewHolder.btn_subscripted.setBackgroundResource (R.drawable.ic_file_liked);
+                Toast.makeText (mContext,"Is subscripted",Toast.LENGTH_LONG).show ();
             }
         });
 
@@ -94,34 +96,36 @@ public class RecommendAdapter extends RecyclerView.Adapter<fr.ws.reader.adapter.
 
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), FeedsArticleActivity.class);
+                intent.putExtra ("url",Feeds.get(viewHolder.getAdapterPosition()).getLink());
+                intent.putExtra ("title",Feeds.get(viewHolder.getAdapterPosition ()).getTitle ());
+                mContext.startActivity (intent);
 
-                //show Feed content inside a dialog
-                FeedView = new WebView(mContext);
-
-                FeedView.getSettings().setLoadWithOverviewMode(true);
-
-                String title = Feeds.get(viewHolder.getAdapterPosition()).getTitle();
-                String content = Feeds.get(viewHolder.getAdapterPosition()).getDescription();
-                String link = Feeds.get(viewHolder.getAdapterPosition()).getLink();
-                FeedView.getSettings().setJavaScriptEnabled(true);
-                FeedView.setHorizontalScrollBarEnabled(false);
-                FeedView.setWebChromeClient(new WebChromeClient());
-                FeedView.loadDataWithBaseURL(null, "<style>img{display: inline; height: auto; max-width: 100%;} " +
-
-                        "</style>\n" + "<style>iframe{ height: auto; width: auto;}" + "</style>\n" + "</br><a href="+link +">Lire l'Feed sur une page web</a></br>"+content, null, "utf-8", null);
-
-                android.support.v7.app.AlertDialog alertDialog = new android.support.v7.app.AlertDialog.Builder(mContext).create();
-                alertDialog.setTitle(title);
-                alertDialog.setView(FeedView);
-                alertDialog.setButton(android.support.v7.app.AlertDialog.BUTTON_NEUTRAL, "OK",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
-                alertDialog.show();
-
-                ((TextView) alertDialog.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
+//                //show Feed content inside a dialog
+//                FeedView = new WebView(mContext);
+//                FeedView.getSettings().setLoadWithOverviewMode(true);
+//                String title = Feeds.get(viewHolder.getAdapterPosition()).getTitle();
+//                String content = Feeds.get(viewHolder.getAdapterPosition()).getDescription();
+//                String link = Feeds.get(viewHolder.getAdapterPosition()).getLink();
+//                FeedView.getSettings().setJavaScriptEnabled(true);
+//                FeedView.setHorizontalScrollBarEnabled(false);
+//                FeedView.setWebChromeClient(new WebChromeClient());
+//                FeedView.loadDataWithBaseURL(null, "<style>img{display: inline; height: auto; max-width: 100%;} " +
+//
+//                        "</style>\n" + "<style>iframe{ height: auto; width: auto;}" + "</style>\n" + "</br><a href="+link +">Lire l'Feed sur une page web</a></br>"+content, null, "utf-8", null);
+//
+//                android.support.v7.app.AlertDialog alertDialog = new android.support.v7.app.AlertDialog.Builder(mContext).create();
+//                alertDialog.setTitle(title);
+//                alertDialog.setView(FeedView);
+//                alertDialog.setButton(android.support.v7.app.AlertDialog.BUTTON_NEUTRAL, "OK",
+//                        new DialogInterface.OnClickListener() {
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                dialog.dismiss();
+//                            }
+//                        });
+//                alertDialog.show();
+//
+//                ((TextView) alertDialog.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
             }
         });
     }
@@ -156,7 +160,7 @@ public class RecommendAdapter extends RecyclerView.Adapter<fr.ws.reader.adapter.
         TextView pubDate;
         ImageView Feed_image;
         TextView category;
-        Button btn_delete;
+        Button btn_subscripted;
 
         public ViewHolder(View itemView) {
 
@@ -165,7 +169,7 @@ public class RecommendAdapter extends RecyclerView.Adapter<fr.ws.reader.adapter.
             pubDate = itemView.findViewById(R.id.pubDate);
             Feed_image = itemView.findViewById(R.id.feed_image);
             category = itemView.findViewById(R.id.categories);
-            btn_delete=itemView.findViewById(R.id.btn_delete);
+            btn_subscripted=itemView.findViewById(R.id.btn_subs);
         }
     }
 }
