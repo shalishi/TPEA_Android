@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import fr.ws.reader.R;
 import fr.ws.reader.adapter.PagerAdapter;
-import fr.ws.reader.app.Config;
 import fr.ws.reader.app.Constants;
 import fr.ws.reader.app.MainApplication;
 import fr.ws.reader.base.BaseActivity;
@@ -54,11 +53,11 @@ public class MainActivity extends BaseActivity implements OnLoginStatusChangeLis
     @BindView(R.id.view_line)
     View view_line;
     @Titles
-    private int[] title = {R.string.tab_home,R.string.tab_sub,R.string.tab_person};
+    private int[] title = {R.string.tab_home,R.string.readlater_sub,R.string.tab_sub,R.string.tab_person};
     @NorIcons
-    private int[] iconSel = {R.mipmap.tab_home, R.mipmap.tab_heart,  R.mipmap.tab_user};
+    private int[] iconSel = {R.mipmap.tab_home, R.mipmap.tab_heart,R.mipmap.tab_recommend, R.mipmap.tab_user};
     @SeleIcons
-    private int[] iconUnSel = {R.mipmap.tab_home_sel, R.mipmap.tab_heart_sel, R.mipmap.tab_user_sel};
+    private int[] iconUnSel = {R.mipmap.tab_home_sel, R.mipmap.tab_heart_sel,R.mipmap.tab_recommend_sel,R.mipmap.tab_user_sel};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -120,6 +119,7 @@ public class MainActivity extends BaseActivity implements OnLoginStatusChangeLis
     private ArrayList<Fragment> getFragments() {
         ArrayList<Fragment> fragments = new ArrayList<>();
         fragments.add(new HomeFragment());
+        fragments.add (new ReadLaterFragment ());
         fragments.add(new RecommendFragment ());
         fragments.add(new PersonFragment());
 
@@ -178,7 +178,7 @@ public class MainActivity extends BaseActivity implements OnLoginStatusChangeLis
     public void onTabSelect(int index) {
         if (index == 1) {
             this.mPosition = index;
-        } else if (index == 3) {
+        } else if (index == 2) {
            /* //个人fragment
             if (account == null) {
                 startActivityForResult(LoginInsideActivity.class, Constants.LOGIN);
@@ -186,7 +186,9 @@ public class MainActivity extends BaseActivity implements OnLoginStatusChangeLis
             }
             */
             this.mPosition = index;
-        } else {
+        } else if(index == 3){
+
+        } else{
             this.mPosition = index;
         }
     }

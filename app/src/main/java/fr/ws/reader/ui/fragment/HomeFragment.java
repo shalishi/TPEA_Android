@@ -1,8 +1,12 @@
 package fr.ws.reader.ui.fragment;
 
+import android.app.DownloadManager;
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
+import android.os.Environment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -171,6 +175,8 @@ public class HomeFragment extends BaseFragment {
      * download article to read later
      */
     public void downloadArtile(View v){
+
+
 
     }
 

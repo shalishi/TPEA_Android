@@ -164,7 +164,6 @@ public class FeedAdapter extends RecyclerView.Adapter<fr.ws.reader.adapter.FeedA
             pubDate = itemView.findViewById(R.id.pubDate);
             Feed_image = itemView.findViewById(R.id.feed_image);
             category = itemView.findViewById(R.id.categories);
-            btn_delete=itemView.findViewById(R.id.btn_delete);
         }
     }
 }

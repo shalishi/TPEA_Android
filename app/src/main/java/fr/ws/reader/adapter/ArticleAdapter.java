@@ -51,6 +51,11 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
         this.mfm=fm;
     }
 
+    public ArticleAdapter(ArrayList<Article> list, int rowLayout) {
+        this.articles = list;
+        this.rowLayout = rowLayout;
+    }
+
     public void clearData() {
         if (articles != null)
             articles.clear();
@@ -110,13 +115,13 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
                 DatabaseHandler handler = new DatabaseHandler(mContext);
                 if(handler.saveArticle(newArticle)>0){
                     Toast.makeText(mContext,"Download Success!",Toast.LENGTH_SHORT).show();
-                    viewHolder.btn_download.setVisibility(View.INVISIBLE);}
-                else{
+                    viewHolder.btn_download.setVisibility(View.INVISIBLE);
+                    updaterss(list);
+                }else{
                     Toast.makeText(mContext,"Download failed!",Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
 
@@ -193,7 +198,6 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
         ImageView article_image;
         TextView category;
         Button btn_download;
-        Button btn_delete;
 
         public ViewHolder(View itemView) {
 
@@ -203,7 +207,6 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
             article_image = itemView.findViewById(R.id.article_image);
             category = itemView.findViewById(R.id.categories);
             btn_download=itemView.findViewById(R.id.btn_download);
-            btn_delete=itemView.findViewById(R.id.btn_delete);
         }
     }
 }

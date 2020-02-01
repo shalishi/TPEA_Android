@@ -21,7 +21,7 @@ public class mplrssProvider extends ContentProvider {
     private static final String TAG = "mplrssProvider";
     private static final String LOG = "mplrssProvider";
     private SQLiteOpenHelper helper;
-    private static  String authority="fr.mplrss.mplrssProvider";
+    private static  String authority="fr.reader.mplrssProvider";
 
 
     private static final int SOUSCRIPTION=1;
