@@ -39,8 +39,8 @@
 }
 
 #fairebase
--keep attributes Signature
--keep attributes *Annotation*
+-keepattributes Signature
+-keepattributes *Annotation*
 
 
 #okhttputils

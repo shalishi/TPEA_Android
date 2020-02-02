@@ -140,13 +140,12 @@ public class RegisterActivity extends BaseActivity {
                         MainApplication.app.setAccount(acc);
                         Account account = MainApplication.app.getAccount();
                         if (account.getIsActive() == 1) {
+                            showSuccess(et_email,"Registration sucess!");
+                            sendBroadcast(Config.ACTION_LOGIN);
+                            dismissLoading();
                             startActivity(MainActivity.class);
+                            finish();
                         }
-                        showSuccess(et_email,"Registration sucess!");
-                        sendBroadcast(Config.ACTION_LOGIN);
-                        dismissLoading();
-                        startActivity(MainActivity.class);
-                        finish();
 
                     } else {
                         dismissLoading();
